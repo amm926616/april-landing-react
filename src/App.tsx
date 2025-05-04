@@ -9,7 +9,7 @@ import ContactComponent from "./components/ContactComponent";
 import { useRef } from "react";
 
 const App: React.FC<HeroProps> = () => {
-  const featuresRef = useRef<HTMLDivElement>(null), screenshotRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
 
   const scrollToFeatures = () => {
     featuresRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -19,7 +19,7 @@ const App: React.FC<HeroProps> = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow p-4 pt-16">
-        <HeroComponent />
+        <HeroComponent scrollToFeatures={scrollToFeatures}/>
         <FeaturesComponent />
         <ScreenshotComponent />
         <DemoComponent />
