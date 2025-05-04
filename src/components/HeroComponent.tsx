@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export interface HeroProps {
   scrollToFeatures: () => void;
@@ -14,7 +15,6 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
     const fullText = "Welcome to April Music Player";
     let currentIndex = 0;
 
-    // Typing animation
     typingIntervalRef.current = window.setInterval(() => {
       if (currentIndex < fullText.length) {
         setDisplayText(fullText.substring(0, currentIndex + 1));
@@ -24,14 +24,12 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
           window.clearInterval(typingIntervalRef.current);
         }
 
-        // Start cursor blinking after typing completes
         cursorIntervalRef.current = window.setInterval(() => {
           setShowCursor((prev) => !prev);
         }, 500);
       }
     }, 100);
 
-    // Cleanup function
     return () => {
       if (typingIntervalRef.current) {
         window.clearInterval(typingIntervalRef.current);
@@ -51,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
       }}
     >
       {/* Glassy overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
 
       <div className="relative z-10 text-center px-4 py-20 max-w-4xl mx-auto">
         <div className="mb-6 min-h-[120px] md:min-h-[160px] flex items-center justify-center">
@@ -75,39 +73,35 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
         </p>
 
         <div className="flex justify-center mb-12">
-          <img
+          <motion.img
             src="/src/images/april-icon.png"
             alt="april-music-player"
-            className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-lg animate-float"
+            className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-lg"
             draggable="false"
+            animate={{
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
         </div>
 
-        <button
+        <motion.button
           onClick={scrollToFeatures}
-          className="inline-block px-8 py-3 bg-[var(--crimson)] text-white rounded-full font-medium hover:bg-[#0e0d0d] transition-colors shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-opacity-50"
+          className="inline-block px-8 py-3 bg-[var(--crimson)] text-white rounded-full font-medium hover:bg-[#0e0d0d] transition-colors shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-opacity-50"
           aria-label="Scroll to features section"
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)",
+          }}
+          whileTap={{ scale: 0.95 }}
         >
           Let's dive in!
-        </button>
+        </motion.button>
       </div>
-
-      <style jsx>{`
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
-        }
-      `}</style>
     </section>
   );
 };
