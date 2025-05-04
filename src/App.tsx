@@ -1,13 +1,20 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FeaturesComponent from "./components/FeaturesComponent";
-import HeroComponent from "./components/HeroComponent";
+import HeroComponent, { HeroProps } from "./components/HeroComponent";
 import ScreenshotComponent from "./components/ScreenshotComponent";
 import DemoComponent from "./components/DemoComponent";
 import DownloadComponent from "./components/DownloadComponent";
 import ContactComponent from "./components/ContactComponent";
+import { useRef } from "react";
 
-function App() {
+const App: React.FC<HeroProps> = () => {
+  const featuresRef = useRef<HTMLDivElement>(null), screenshotRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFeatures = () => {
+    featuresRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -22,6 +29,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

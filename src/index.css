@@ -1,1 +1,41 @@
 @import 'tailwindcss';
+
+:root {
+    --raven: #0d0d12;
+    --crimson: #af1b1b;
+}
+
+@layer components {
+    .typewriter {
+        border-right: 0.15em solid var(--crimson);
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: 0.15em;
+        animation:
+            typing 3.5s steps(40, end),
+            blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+
+        to {
+            width: 100%
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent
+        }
+
+        50% {
+            border-color: var(--crimson);
+        }
+    }
+}
