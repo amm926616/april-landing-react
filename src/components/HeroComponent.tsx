@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import aprilHeroIcon from "/src/assets/images/april-icon.png";
 
 export interface HeroProps {
   scrollToFeatures: () => void;
@@ -74,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
 
         <div className="flex justify-center mb-12">
           <motion.img
-            src="/src/images/april-icon.png"
+            src={aprilHeroIcon}
             alt="april-music-player"
             className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-lg"
             draggable="false"

@@ -1,4 +1,5 @@
 import React from "react";
+import favicon from "/src/assets/images/favicon.ico";
 
 interface HeaderProps {
   onDownloadClick?: () => void;
@@ -17,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
             className="hover:text-[var(--crimson)] transition-colors flex items-center"
           >
             <img
-              src="/src/images/favicon.ico"
+              src={favicon}
               alt="April Music Player Logo"
               className="w-5 h-5 mr-2 object-contain hover:scale-110 transition-transform"
             />
