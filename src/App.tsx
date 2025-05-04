@@ -1,14 +1,14 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import FeaturesComponent from "./components/FeaturesComponent";
-import HeroComponent, { HeroProps } from "./components/HeroComponent";
-import ScreenshotComponent from "./components/ScreenshotComponent";
+import { useRef } from "react";
+import ContactComponent from "./components/ContactComponent";
 import DemoComponent from "./components/DemoComponent";
 import DownloadComponent from "./components/DownloadComponent";
-import ContactComponent from "./components/ContactComponent";
-import { useRef } from "react";
+import FeaturesComponent from "./components/FeaturesComponent";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HeroComponent from "./components/HeroComponent";
+import ScreenshotComponent from "./components/ScreenshotComponent";
 
-const App: React.FC<HeroProps> = () => {
+const App =  () => {
   const featuresRef = useRef<HTMLDivElement>(null);
 
   const scrollToFeatures = () => {
