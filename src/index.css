@@ -1,8 +1,9 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
-    --raven: #0d0d12;
-    --crimson: #af1b1b;
+    --crimson: #e63946; /* More vibrant red */
+    --raven: #0d0d12; /* Dark background */
+    --raven-light: #1a1a24; /* Slightly lighter dark */
 }
 
 @layer components {
@@ -19,19 +20,18 @@
 
     @keyframes typing {
         from {
-            width: 0
+            width: 0;
         }
 
         to {
-            width: 100%
+            width: 100%;
         }
     }
 
     @keyframes blink-caret {
-
         from,
         to {
-            border-color: transparent
+            border-color: transparent;
         }
 
         50% {
