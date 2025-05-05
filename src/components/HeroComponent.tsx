@@ -157,7 +157,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
           className="relative px-8 py-3 bg-[var(--crimson)] text-white rounded-full font-medium shadow-lg overflow-hidden cursor-pointer"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.3 }}
+          transition={{ duration: 0.3 }}
           whileHover={{
             scale: 1.05,
             boxShadow: "0 0 20px rgba(230, 57, 70, 0.7)",
