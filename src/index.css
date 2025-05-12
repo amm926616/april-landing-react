@@ -39,3 +39,7 @@
         }
     }
 }
+
+html {
+    scroll-behavior: smooth;
+}
