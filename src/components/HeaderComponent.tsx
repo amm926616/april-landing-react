@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaDownload, FaTelegram } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
 
 interface HeaderProps {
   onDownloadClick?: () => void;
@@ -13,7 +14,13 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", " ", "screenshots", "contact"];
+      const sections = [
+        "home",
+        "features",
+        "screenshots",
+        "roadmap",
+        "contact",
+      ];
       let current = "home";
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -32,68 +39,96 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
+    document.body.style.overflow = menuOpen ? "auto" : "hidden";
   };
+
+  const navItems = [
+    { id: "features", label: "Features" },
+    { id: "screenshots", label: "Screenshots" },
+    { id: "roadmap", label: "Roadmap" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
     <header
-      className={`fixed w-full text-white shadow-lg z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#1a1a24]" : "bg-[#1a1a24]/90"
+      className={`fixed w-full text-white z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-[#0d1117]/95 backdrop-blur-md py-2 shadow-lg border-b border-gray-800/50"
+          : "bg-transparent py-4"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">
-            <a
-              href="#home"
-              className="flex items-center hover:text-[#e63946] transition-colors"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-6 h-6 bg-[#e63946] rounded-full flex items-center justify-center mr-2"
-              >
-                <span className="text-white">🎵</span>
-              </motion.div>
-              April Music Player
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center"
+          >
+            <a href="#home" className="flex items-center group">
+              <div className="relative">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#e63946] to-[#ff6b6b] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                  <span className="text-white text-sm">🎵</span>
+                </div>
+                <div className="absolute inset-0 rounded-full border-2 border-[#e63946] opacity-0 group-hover:opacity-100 animate-ping-slow pointer-events-none transition-opacity"></div>
+              </div>
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
+                April Music Player
+              </span>
             </a>
-          </h1>
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center">
-            <ul className="flex space-x-8 items-center">
-              {['features', 'screenshots', 'contact'].map((section) => (
-                <li key={section}>
+          <nav className="hidden md:flex items-center space-x-2">
+            <ul className="flex space-x0 items-center">
+              {navItems.map((item) => (
+                <li key={item.id}>
                   <a
-                    href={`#${section}`}
-                    className={`font-medium transition-all duration-300 ${
-                      activeSection === section
-                        ? "text-[#e63946] border-b-2 border-[#e63946]"
-                        : "text-gray-300 hover:text-[#e63946]"
+                    href={`#${item.id}`}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      activeSection === item.id
+                        ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
+                        : "text-gray-300 hover:text-white hover:bg-gray-800/50"
                     }`}
                   >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <button
-              onClick={onDownloadClick}
-              className="ml-6 bg-[#e63946] hover:bg-[#b01030] text-white px-8 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
-            >
-              Download Now
-            </button>
+            <div className="flex items-center space-x-3 ml-4">
+              <a
+                href="https://github.com/your-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
+                aria-label="GitHub"
+              >
+                <FiGithub className="w-5 h-5" />
+              </a>
+              <motion.button
+                onClick={onDownloadClick}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+              >
+                <FaDownload className="mr-2" />
+                Download
+              </motion.button>
+            </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <button
+          <motion.button
             onClick={toggleMenu}
-            className="md:hidden text-gray-300 hover:text-[#e63946] transition-colors"
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
+            aria-label="Menu"
           >
             {menuOpen ? (
               <FaTimes className="w-6 h-6" />
             ) : (
               <FaBars className="w-6 h-6" />
             )}
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
@@ -102,32 +137,61 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4"
+            className="md:hidden fixed inset-0 bg-[#0d1117]/95 backdrop-blur-md pt-20 px-4 z-40"
           >
-            <div className="bg-[#1a1a24] rounded-lg p-4">
+            <div className="flex flex-col h-full">
               <ul className="space-y-4">
-                {['features', 'screenshots', 'contact'].map((section) => (
-                  <li key={section}>
+                {navItems.map((item) => (
+                  <li key={item.id}>
                     <a
-                      href={`#${section}`}
-                      className={`block text-gray-300 hover:text-[#e63946] transition-colors font-medium ${
-                        activeSection === section ? "text-[#e63946]" : ""
+                      href={`#${item.id}`}
+                      className={`block px-4 py-3 rounded-lg text-xl font-medium transition-colors ${
+                        activeSection === item.id
+                          ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
+                          : "text-gray-300 hover:text-white hover:bg-gray-800/50"
                       }`}
                       onClick={toggleMenu}
                     >
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                      {item.label}
                     </a>
                   </li>
                 ))}
-                <li>
-                  <button
-                    onClick={onDownloadClick}
-                    className="w-full bg-[#e63946] hover:bg-[#b01030] text-white px-4 py-3 rounded-full transition-all duration-300 font-semibold"
-                  >
-                    Download Now
-                  </button>
-                </li>
               </ul>
+
+              <div className="mt-auto mb-8 space-y-4">
+                <div className="flex justify-center space-x-4">
+                  <a
+                    href="https://github.com/your-repo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-white p-3 rounded-full hover:bg-gray-800/50 transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <FiGithub className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://t.me/your-telegram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-white p-3 rounded-full hover:bg-gray-800/50 transition-colors"
+                    aria-label="Telegram"
+                  >
+                    <FaTelegram className="w-6 h-6" />
+                  </a>
+                </div>
+
+                <motion.button
+                  onClick={() => {
+                    if (onDownloadClick) onDownloadClick();
+                    toggleMenu();
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg"
+                >
+                  <FaDownload className="mr-2" />
+                  Download Now
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}

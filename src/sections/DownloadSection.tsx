@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 
 interface Platform {
   name: string;
@@ -13,49 +13,85 @@ interface Platform {
 const platforms: Platform[] = [
   {
     name: "Windows",
-    icon: <svg className="w-8 h-8 text-[var(--crimson)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-    </svg>,
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      </svg>
+    ),
     downloadUrl: "#",
     systemRequirements: [
       "Windows 10 or later",
       "64-bit version",
       "4GB RAM or more",
-      "500MB free disk space"
+      "500MB free disk space",
     ],
     size: "50 MB",
-    version: "2.1.0"
+    version: "2.1.0",
   },
   {
     name: "macOS",
-    icon: <svg className="w-8 h-8 text-[var(--crimson)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-    </svg>,
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+        />
+      </svg>
+    ),
     downloadUrl: "#",
     systemRequirements: [
       "macOS 10.15 or later",
       "64-bit version",
       "4GB RAM or more",
-      "500MB free disk space"
+      "500MB free disk space",
     ],
     size: "55 MB",
-    version: "2.1.0"
+    version: "2.1.0",
   },
   {
     name: "Linux",
-    icon: <svg className="w-8 h-8 text-[var(--crimson)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-    </svg>,
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        />
+      </svg>
+    ),
     downloadUrl: "#",
     systemRequirements: [
       "Ubuntu 20.04 or later",
       "64-bit version",
       "4GB RAM or more",
-      "500MB free disk space"
+      "500MB free disk space",
     ],
     size: "45 MB",
-    version: "2.1.0"
-  }
+    version: "2.1.0",
+  },
 ];
 
 interface DownloadSectionProps {
@@ -65,12 +101,16 @@ interface DownloadSectionProps {
 
 const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
   return (
-    <section id={id} className={className + "py-20 bg-[var(--raven)]/90"}>
+    <section
+      id={id}
+      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
+    >
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-[var(--crimson)] mb-4">
@@ -85,33 +125,43 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
           {platforms.map((platform, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-[var(--raven)]/80 p-8 rounded-lg hover:bg-[var(--raven)]/70 transition-colors"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
             >
               <div className="flex justify-center mb-6">
-                <div className="bg-[var(--raven)]/50 p-4 rounded-full">
-                  {platform.icon}
-                </div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="bg-[#1a1a24] p-4 rounded-full border border-[#e63946]/30"
+                ></motion.div>
               </div>
-              <h3 className="text-2xl font-bold text-[var(--crimson)] mb-4">
+              <h3 className="text-2xl font-bold text-white text-center mb-4">
                 {platform.name}
               </h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-400 text-center mb-6">
                 Version {platform.version} • {platform.size}
               </p>
-              <button
-                className="w-full px-6 py-3 bg-[var(--crimson)] text-white rounded-full hover:bg-[var(--crimson)]/90 transition-colors mb-6"
-                onClick={() => window.open(platform.downloadUrl, '_blank')}
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full px-6 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#e63946]/90 transition-colors mb-6 font-medium"
+                onClick={() => window.open(platform.downloadUrl, "_blank")}
               >
                 Download Now
-              </button>
-              <div className="text-sm text-gray-500">
-                <h4 className="font-semibold mb-2">System Requirements:</h4>
-                <ul className="list-disc list-inside space-y-1">
+              </motion.button>
+              <div className="text-sm text-gray-400">
+                <h4 className="font-semibold text-white mb-3">
+                  System Requirements:
+                </h4>
+                <ul className="space-y-2">
                   {platform.systemRequirements.map((req, i) => (
-                    <li key={i}>{req}</li>
+                    <li key={i} className="flex items-start">
+                      <span className="text-[#e63946] mr-2">•</span>
+                      <span>{req}</span>
+                    </li>
                   ))}
                 </ul>
               </div>

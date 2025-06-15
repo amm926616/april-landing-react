@@ -1,4 +1,4 @@
-import React from 'react';
+import { motion } from "framer-motion";
 
 const updates = [
   {
@@ -9,8 +9,8 @@ const updates = [
       "Improved pronunciation guide accuracy",
       "Added offline learning mode",
       "Enhanced user interface with dark mode",
-      "Performance improvements and bug fixes"
-    ]
+      "Performance improvements and bug fixes",
+    ],
   },
   {
     version: "1.1.0",
@@ -20,8 +20,8 @@ const updates = [
       "Basic lyric translations",
       "Offline music playback",
       "Playlist creation and management",
-      "Smart search and discovery"
-    ]
+      "Smart search and discovery",
+    ],
   },
   {
     version: "1.0.0",
@@ -31,9 +31,9 @@ const updates = [
       "Basic music player functionality",
       "Playlist support",
       "Basic user interface",
-      "Cross-platform compatibility"
-    ]
-  }
+      "Cross-platform compatibility",
+    ],
+  },
 ];
 
 interface UpdatesSectionProps {
@@ -43,38 +43,66 @@ interface UpdatesSectionProps {
 
 const UpdatesSection: React.FC<UpdatesSectionProps> = ({ id, className }) => {
   return (
-    <section id={id} className={className + "py-20 bg-[#1a1a24]"}>
+    <section
+      id={id}
+      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-center text-[var(--crimson)] mb-12"
+        >
           Recent Updates
-        </h2>
-        <div className="space-y-8">
+        </motion.h2>
+        <div className="space-y-6 max-w-4xl mx-auto">
           {updates.map((update, index) => (
-            <div key={index} className="bg-[#1a1a24]/90 p-6 rounded-2xl">
-              <div className="flex items-center justify-between mb-4">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div>
                   <h3 className="text-2xl font-semibold text-white">
                     Version {update.version}
                   </h3>
                   <p className="text-gray-400">Released {update.date}</p>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-[#e63946]">⭐</span>
-                  <span className="text-[#e63946]">⭐</span>
-                  <span className="text-[#e63946]">⭐</span>
-                  <span className="text-[#e63946]">⭐</span>
-                  <span className="text-[#e63946]">⭐</span>
+                <div className="flex items-center mt-2 md:mt-0">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.span
+                      key={i}
+                      whileHover={{ scale: 1.2 }}
+                      className="text-[#e63946] text-xl"
+                    >
+                      ⭐
+                    </motion.span>
+                  ))}
                 </div>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {update.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start">
-                    <span className="text-[#e63946] mr-2">•</span>
+                  <motion.li
+                    key={featureIndex}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: featureIndex * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start"
+                  >
+                    <span className="text-[#e63946] mr-3 mt-1">•</span>
                     <p className="text-gray-300">{feature}</p>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
