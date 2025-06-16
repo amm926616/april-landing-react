@@ -82,12 +82,12 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {platforms.map((platform, index) => (
+          {platforms.map((platform) => (
             <motion.div
-              key={index}
+              key={platform.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
               className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
@@ -112,6 +112,7 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
                 whileTap={{ scale: 0.98 }}
                 className="w-full px-6 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#e63946]/90 transition-colors mb-6 font-medium"
                 onClick={() => window.open(platform.downloadUrl, "_blank")}
+                aria-label={`Download ${platform.name} version ${platform.version}`}
               >
                 Download Now
               </motion.button>
