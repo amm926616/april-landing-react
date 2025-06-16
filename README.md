@@ -16,7 +16,7 @@
 
 ## 🖼️ About This Repo
 
-This repository contains the **landing page only** for [April Music Player](https://github.com/your-username/april-music-player), not the player app itself.
+This repo is for the development of the landing page for April Music Player.
 
 Built with:
 
@@ -36,3 +36,10 @@ Built with:
 - 📷 Beautiful layout with image highlights
 
 ---
+
+## Development Utility Shortcuts to be added.
+
+- `bun install` - for fresh pulled repo.
+- `bun run dev` - to run in local host 5173.
+- `bun run build` - to build the project.
+- `bun run preview` - to preview the project locally.
