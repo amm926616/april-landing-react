@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { AiFillApple, AiFillWindows } from "react-icons/ai";
+import { FaLinux } from "react-icons/fa6";
 
 interface Platform {
   name: string;
@@ -13,21 +15,7 @@ interface Platform {
 const platforms: Platform[] = [
   {
     name: "Windows",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-        />
-      </svg>
-    ),
+    icon: <AiFillWindows className="w-8 h-8" />,
     downloadUrl: "#",
     systemRequirements: [
       "Windows 10 or later",
@@ -40,21 +28,7 @@ const platforms: Platform[] = [
   },
   {
     name: "macOS",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-        />
-      </svg>
-    ),
+    icon: <AiFillApple className="w-8 h-8" />,
     downloadUrl: "#",
     systemRequirements: [
       "macOS 10.15 or later",
@@ -67,21 +41,7 @@ const platforms: Platform[] = [
   },
   {
     name: "Linux",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
+    icon: <FaLinux className="w-8 h-8" />, // Lucide has a generic Linux icon. If you want a penguin, it's in @lucide/lab.
     downloadUrl: "#",
     systemRequirements: [
       "Ubuntu 20.04 or later",
@@ -136,8 +96,11 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   className="bg-[#1a1a24] p-4 rounded-full border border-[#e63946]/30"
-                ></motion.div>
+                >
+                  {platform.icon}
+                </motion.div>
               </div>
+
               <h3 className="text-2xl font-bold text-white text-center mb-4">
                 {platform.name}
               </h3>
