@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "backup/HeroComponent.tsx", "backup/DemoComponent.tsx", "backup/EqualizerComponent.tsx", "backup/FeaturesComponent.tsx", "backup/ContactComponent.tsx"]
 }
