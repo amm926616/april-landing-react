@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
+import windowlogo from "/src/assets/images/OSlogos/Window_red.png";
+import maclogo from "/src/assets/images/OSlogos/apple_red.png";
+import linuxlogo from "/src/assets/images/OSlogos/Linux_red.png";
 
 interface Platform {
   name: string;
@@ -13,21 +16,7 @@ interface Platform {
 const platforms: Platform[] = [
   {
     name: "Windows",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-        />
-      </svg>
-    ),
+    icon: <img src={windowlogo} alt="Windows Logo" className="w-25 h-25" />,
     downloadUrl: "#",
     systemRequirements: [
       "Windows 10 or later",
@@ -40,21 +29,7 @@ const platforms: Platform[] = [
   },
   {
     name: "macOS",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-        />
-      </svg>
-    ),
+    icon: <img src={maclogo} alt="macOS Logo" className="w-25 h-25" />,
     downloadUrl: "#",
     systemRequirements: [
       "macOS 10.15 or later",
@@ -67,21 +42,7 @@ const platforms: Platform[] = [
   },
   {
     name: "Linux",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
+    icon: <img src={linuxlogo} alt="Linux Logo" className="w-25 h-25" />,
     downloadUrl: "#",
     systemRequirements: [
       "Ubuntu 20.04 or later",
@@ -122,12 +83,12 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {platforms.map((platform, index) => (
+          {platforms.map((platform) => (
             <motion.div
-              key={index}
+              key={platform.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
               className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
@@ -136,7 +97,9 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   className="bg-[#1a1a24] p-4 rounded-full border border-[#e63946]/30"
-                ></motion.div>
+                >
+                  {platform.icon}
+                </motion.div>
               </div>
               <h3 className="text-2xl font-bold text-white text-center mb-4">
                 {platform.name}
@@ -149,6 +112,7 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
                 whileTap={{ scale: 0.98 }}
                 className="w-full px-6 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#e63946]/90 transition-colors mb-6 font-medium"
                 onClick={() => window.open(platform.downloadUrl, "_blank")}
+                aria-label={`Download ${platform.name} version ${platform.version}`}
               >
                 Download Now
               </motion.button>
