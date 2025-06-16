@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://april-player.vercel.app/">🔗 Visit Live Site on Vercel</a>
+  <a href="https://april-landing-react.vercel.app/">🔗 Visit Live Site on Vercel</a>
 </p>
 
 ---
