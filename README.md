@@ -5,9 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://april-player.vercel.app/" target="_blank">
-    <img src="assets/preview.png" alt="April Landing Page Screenshot" width="80%"/>
-  </a>
+    <img src="assets/preview.png" alt="April Landing Page Screenshot" width="95%"/>
 </p>
 
 <p align="center">
