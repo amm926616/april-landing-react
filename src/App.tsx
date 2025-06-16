@@ -14,6 +14,7 @@ import SupportSection from "./sections/SupportSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import UpdatesSection from "./sections/UpdatesSection";
 import RoadmapSection from "./sections/RoadmapSection";
+import PaymentSection from "./sections/PaymentSection";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
               <FAQSection id="faq" className="scroll-mt-20" />
               <DownloadSection id="download" className="scroll-mt-20" />
               <ContactSection id="contact" className="scroll-mt-20" />
+              <PaymentSection id="payment" className="scroll-mt-20" />
             </div>
           </div>
         </main>
