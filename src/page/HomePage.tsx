@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <main className="pt-8">
       <HeroSection
-        id="home"
+        id="#"
         className="scroll-mt-20 min-h-[90vh] flex items-center"
       />
 
