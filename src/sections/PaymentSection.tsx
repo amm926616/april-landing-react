@@ -61,7 +61,7 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
                 </span>
               </div>
             </div>
-            <button className={`${buttonClasses} bg-[#0070BA]`}>
+            <button className={`${buttonClasses} bg-[#0070BA] cursor-pointer`}>
               Continue to PayPal
             </button>
           </motion.div>
@@ -103,7 +103,7 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
                 </span>
               </div>
             </div>
-            <button className={`${buttonClasses} bg-[#FF4800]`}>
+            <button className={`${buttonClasses} bg-[#FF4800] cursor-pointer`}>
               Continue to Payoneer
             </button>
           </motion.div>
@@ -208,7 +208,9 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
                 </div>
               </div>
 
-              <button className={`${buttonClasses} bg-[#ff4757] mt-4`}>
+              <button
+                className={`${buttonClasses} bg-[#ff4757] mt-4 cursor-pointer`}
+              >
                 {selectedPlan === "one-time" ? "Pay $40" : "Start Installments"}
               </button>
             </form>
@@ -278,7 +280,9 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
                 </div>
               </div>
 
-              <button className={`${buttonClasses} bg-[#ff4757]`}>
+              <button
+                className={`${buttonClasses} bg-[#ff4757] cursor-pointer`}
+              >
                 Request Payment Instructions
               </button>
             </form>
@@ -333,13 +337,13 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
         >
           <div className="bg-[#1e1e2a] p-1 rounded-full inline-flex">
             <button
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${selectedPlan === "one-time" ? "bg-[#ff4757] text-white" : "text-gray-400 hover:text-white"}`}
+              className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${selectedPlan === "one-time" ? "bg-[#ff4757] text-white" : "text-gray-400 hover:text-white"}`}
               onClick={() => setSelectedPlan("one-time")}
             >
               One-Time Payment
             </button>
             <button
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${selectedPlan === "installment" ? "bg-[#ff4757] text-white" : "text-gray-400 hover:text-white"}`}
+              className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${selectedPlan === "installment" ? "bg-[#ff4757] text-white" : "text-gray-400 hover:text-white"}`}
               onClick={() => setSelectedPlan("installment")}
             >
               Installment Plan
@@ -400,7 +404,7 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 rounded-lg font-bold ${selectedPlan === "one-time" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-400"} shadow-md`}
+              className={`w-full py-3 rounded-lg font-bold cursor-pointer ${selectedPlan === "one-time" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-400"} shadow-md`}
               onClick={() => setSelectedPaymentMethod("credit_card")}
             >
               {selectedPlan === "one-time"
@@ -455,7 +459,7 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 rounded-lg font-bold ${selectedPlan === "installment" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-400"} shadow-md`}
+              className={`w-full py-3 rounded-lg font-bold cursor-pointer ${selectedPlan === "installment" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-400"} shadow-md`}
               onClick={() => setSelectedPaymentMethod("credit_card")}
             >
               {selectedPlan === "installment"
@@ -484,25 +488,25 @@ const PaymentSection: React.FC<PaymentSectionProps> = ({ id, className }) => {
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${selectedPaymentMethod === "credit_card" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${selectedPaymentMethod === "credit_card" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
               onClick={() => setSelectedPaymentMethod("credit_card")}
             >
               <CreditCard className="w-5 h-5 mr-2" /> Card
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${selectedPaymentMethod === "paypal" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${selectedPaymentMethod === "paypal" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
               onClick={() => setSelectedPaymentMethod("paypal")}
             >
               <Wallet className="w-5 h-5 mr-2" /> PayPal
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${selectedPaymentMethod === "payoneer" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${selectedPaymentMethod === "payoneer" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
               onClick={() => setSelectedPaymentMethod("payoneer")}
             >
               <Banknote className="w-5 h-5 mr-2" /> Payoneer
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${selectedPaymentMethod === "other" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${selectedPaymentMethod === "other" ? "bg-[#ff4757] text-white" : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a]"}`}
               onClick={() => setSelectedPaymentMethod("other")}
             >
               <Landmark className="w-5 h-5 mr-2" /> Other
