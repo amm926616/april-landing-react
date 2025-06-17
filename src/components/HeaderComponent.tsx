@@ -1,35 +1,15 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaBars, FaTimes, FaDownload, FaTelegram } from "react-icons/fa";
-import { FiGithub } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 
-interface HeaderProps {
-  onDownloadClick?: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
-  const [activeSection, setActiveSection] = useState("home");
+const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "home",
-        "features",
-        "screenshots",
-        "roadmap",
-        "contact",
-      ];
-      let current = "home";
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 100) {
-          current = id;
-        }
-      }
-      setActiveSection(current);
-
       setIsScrolled(window.scrollY > 20);
     };
 
@@ -43,27 +23,28 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
   };
 
   const navItems = [
-    { id: "features", label: "Features" },
-    { id: "screenshots", label: "Screenshots" },
-    { id: "roadmap", label: "Roadmap" },
-    { id: "contact", label: "Contact" },
+    { id: "about", label: "About", path: "/" },
+    { id: "updates", label: "Updates", path: "/updates" },
+    { id: "contact", label: "Contact", path: "/contact" },
+    { id: "payment", label: "Payment", path: "/payment" },
   ];
 
   return (
     <header
-      className={`fixed w-full text-white z-50 transition-all duration-500 ${
+      className={`fixed w-full text-white z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-[#0d1117]/95 backdrop-blur-md py-2 shadow-lg border-b border-gray-800/50"
-          : "bg-transparent py-4"
+          : "bg-transparent py-3 md:py-4"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
+          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
-            <a href="#home" className="flex items-center group">
+            <Link to="/" className="flex items-center group">
               <div className="relative">
                 <div className="w-8 h-8 bg-gradient-to-br from-[#e63946] to-[#ff6b6b] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
                   <span className="text-white text-sm">🎵</span>
@@ -73,47 +54,39 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
                 April Music Player
               </span>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
-            <ul className="flex space-x0 items-center">
+            <ul className="flex space-x-1 items-center">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      activeSection === item.id
+                  <Link
+                    to={item.path}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center ${
+                      location.pathname === item.path
                         ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
                         : "text-gray-300 hover:text-white hover:bg-gray-800/50"
                     }`}
                   >
+                    {item.id === "payment" && (
+                      <FaShoppingCart className="mr-2" size={14} />
+                    )}
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <div className="flex items-center space-x-3 ml-4">
-              <a
-                href="https://github.com/your-repo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
-                aria-label="GitHub"
-              >
-                <FiGithub className="w-5 h-5" />
-              </a>
-              <motion.button
-                onClick={onDownloadClick}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
-              >
-                <FaDownload className="mr-2" />
-                Download
-              </motion.button>
-            </div>
+            <motion.a
+              href="/download"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-4 py-2 rounded-lg transition-all duration-300 shadow hover:shadow-md font-semibold text-sm"
+            >
+              <FaDownload className="mr-2" size={14} />
+              Download
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -124,9 +97,9 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
             aria-label="Menu"
           >
             {menuOpen ? (
-              <FaTimes className="w-6 h-6" />
+              <FaTimes className="w-5 h-5" />
             ) : (
-              <FaBars className="w-6 h-6" />
+              <FaBars className="w-5 h-5" />
             )}
           </motion.button>
         </div>
@@ -137,60 +110,43 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden fixed inset-0 bg-[#0d1117]/95 backdrop-blur-md pt-20 px-4 z-40"
+            className="md:hidden fixed inset-0 bg-[#0d1117]/95 backdrop-blur-md pt-16 px-4 z-40"
           >
             <div className="flex flex-col h-full">
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {navItems.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className={`block px-4 py-3 rounded-lg text-xl font-medium transition-colors ${
-                        activeSection === item.id
+                    <Link
+                      to={item.path}
+                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
+                        location.pathname === item.path
                           ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
                           : "text-gray-300 hover:text-white hover:bg-gray-800/50"
                       }`}
                       onClick={toggleMenu}
                     >
-                      {item.label}
-                    </a>
+                      {item.id === "payment" ? (
+                        <span className="flex items-center">
+                          <FaShoppingCart className="mr-3" /> {item.label}
+                        </span>
+                      ) : (
+                        item.label
+                      )}
+                    </Link>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto mb-8 space-y-4">
-                <div className="flex justify-center space-x-4">
-                  <a
-                    href="https://github.com/your-repo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white p-3 rounded-full hover:bg-gray-800/50 transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <FiGithub className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://t.me/your-telegram"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white p-3 rounded-full hover:bg-gray-800/50 transition-colors"
-                    aria-label="Telegram"
-                  >
-                    <FaTelegram className="w-6 h-6" />
-                  </a>
-                </div>
-
-                <motion.button
-                  onClick={() => {
-                    if (onDownloadClick) onDownloadClick();
-                    toggleMenu();
-                  }}
+              <div className="mt-auto mb-6">
+                <motion.a
+                  href="/download"
                   whileTap={{ scale: 0.95 }}
-                  className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg"
+                  className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
+                  onClick={toggleMenu}
                 >
-                  <FaDownload className="mr-2" />
+                  <FaDownload className="mr-3" />
                   Download Now
-                </motion.button>
+                </motion.a>
               </div>
             </div>
           </motion.div>
