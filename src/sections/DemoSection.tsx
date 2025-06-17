@@ -5,7 +5,7 @@ interface DemoComponentProps {
   className?: string;
 }
 
-const DemoSection: React.FC<DemoComponentProps> = ({ id, className }) => {
+const DemoSection: React.FC<DemoComponentProps> = ({className }) => {
   return (
     <section
       id="demoSection"

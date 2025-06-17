@@ -59,7 +59,7 @@ interface DownloadSectionProps {
   className?: string;
 }
 
-const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
+const DownloadSection: React.FC<DownloadSectionProps> = ({className }) => {
   return (
     <section
       id="downloadSection"
