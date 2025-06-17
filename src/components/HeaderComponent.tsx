@@ -95,20 +95,11 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
               ))}
             </ul>
             <div className="flex items-center space-x-3 ml-4">
-              <a
-                href="https://github.com/your-repo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
-                aria-label="GitHub"
-              >
-                <FiGithub className="w-5 h-5" />
-              </a>
               <a href="#download">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  className="flex items-center bg-gradient-to-r cursor-pointer from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
                 >
                   <FaDownload className="mr-2" />
                   Download

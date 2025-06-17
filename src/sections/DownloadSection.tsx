@@ -110,7 +110,7 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-6 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#e63946]/90 transition-colors mb-6 font-medium"
+                className="w-full px-6 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#e63946]/90 transition-colors mb-6 font-medium cursor-pointer"
                 onClick={() => window.open(platform.downloadUrl, "_blank")}
                 aria-label={`Download ${platform.name} version ${platform.version}`}
               >
