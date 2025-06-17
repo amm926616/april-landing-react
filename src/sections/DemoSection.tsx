@@ -8,7 +8,7 @@ interface DemoComponentProps {
 const DemoSection: React.FC<DemoComponentProps> = ({ id, className }) => {
   return (
     <section
-      id={id}
+      id="demoSection"
       className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

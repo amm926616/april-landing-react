@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import aprilHeroIcon from "../assets/images/april-icon.png";
 
+
 interface HeroSectionProps {
   id?: string;
   className?: string;
@@ -62,7 +63,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <button className="bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2">
+               <a href="#downloadSection"><button className="bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -76,8 +77,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                     />
                   </svg>
                   Download Now
-                </button>
-                <button className="border-2 border-[#e63946] hover:bg-[#e63946]/10 text-[#e63946] px-8 py-4 rounded-full transition-all duration-300 font-medium flex items-center gap-2">
+                </button></a>
+                <a href="#demoSection"><button className="border-2 border-[#e63946] hover:bg-[#e63946]/10 text-[#e63946] px-8 py-4 rounded-full transition-all duration-300 font-medium flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -91,7 +92,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                     />
                   </svg>
                   Watch Demo
-                </button>
+                </button></a>
               </motion.div>
 
               <motion.div

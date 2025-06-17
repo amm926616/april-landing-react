@@ -62,7 +62,7 @@ interface DownloadSectionProps {
 const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
   return (
     <section
-      id={id}
+      id="downloadSection"
       className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
     >
       <div className="container mx-auto px-4">
