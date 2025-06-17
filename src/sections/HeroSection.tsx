@@ -1,18 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import aprilHeroIcon from "../assets/images/april-icon.png";
+import SectionComponent from "../components/SectionComponent";
 
 interface HeroSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
   return (
-    <section
-      id={id}
-      className={`${className} min-h-screen flex items-center relative bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden`}
-    >
+    <SectionComponent id={id} className={className}>
       {/* Background elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#e63946] mix-blend-screen filter blur-3xl opacity-20"></div>
@@ -181,7 +179,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
           </div>
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 };
 

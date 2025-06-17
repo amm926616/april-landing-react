@@ -59,7 +59,7 @@ interface DownloadSectionProps {
   className?: string;
 }
 
-const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
+const DownloadPage: React.FC<DownloadSectionProps> = ({ id, className }) => {
   return (
     <section
       id={id}
@@ -137,4 +137,4 @@ const DownloadSection: React.FC<DownloadSectionProps> = ({ id, className }) => {
   );
 };
 
-export default DownloadSection;
+export default DownloadPage;
