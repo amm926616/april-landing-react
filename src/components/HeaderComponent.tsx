@@ -104,15 +104,16 @@ const Header: React.FC<HeaderProps> = ({ onDownloadClick }) => {
               >
                 <FiGithub className="w-5 h-5" />
               </a>
-              <motion.button
-                onClick={onDownloadClick}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
-              >
-                <FaDownload className="mr-2" />
-                Download
-              </motion.button>
+              <a href="#download">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                >
+                  <FaDownload className="mr-2" />
+                  Download
+                </motion.button>
+              </a>
             </div>
           </nav>
 
