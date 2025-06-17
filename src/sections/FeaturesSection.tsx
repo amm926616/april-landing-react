@@ -79,7 +79,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ id, className }) => {
   return (
     <section
       id={id}
-      className={`${className} py-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden`}
+      className={`${className} py-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden rounded-2xl`}
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">

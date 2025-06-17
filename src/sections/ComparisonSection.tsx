@@ -1,7 +1,8 @@
 import React from "react";
+import SectionComponent from "../components/SectionComponent";
 
 interface ComparisonSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
@@ -61,10 +62,7 @@ const ComparisonSection: React.FC<ComparisonSectionProps> = ({
   ];
 
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-gray-900 to-gray-800`}
-    >
+    <SectionComponent id={id} className={className}>
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600 mb-4">
@@ -159,7 +157,7 @@ const ComparisonSection: React.FC<ComparisonSectionProps> = ({
           </div>
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 };
 
