@@ -2,6 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import aprilHeroIcon from "../assets/images/april-icon.png";
 import SectionComponent from "../components/SectionComponent";
+import { Link } from "react-router-dom";
+
+
+
 
 interface HeroSectionProps {
   id: string;
@@ -60,23 +64,24 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <a href="#download">
-                  <button className="bg-gradient-to-r cursor-pointer from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Download Now
-                  </button>
-                </a>
+                <Link to="/download">
+  <button className="bg-gradient-to-r cursor-pointer from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+        clipRule="evenodd"
+      />
+    </svg>
+    Download Now
+  </button>
+</Link>
+
                 <a href="#demo">
                   <button className="border-2 border-[#e63946] hover:bg-[#e63946]/10 text-[#e63946] px-8 py-4 rounded-full transition-all duration-300 font-medium flex items-center gap-2 cursor-pointer">
                     <svg
