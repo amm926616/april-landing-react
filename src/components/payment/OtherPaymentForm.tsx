@@ -67,7 +67,7 @@ const OtherPaymentForm: React.FC<PaymentFormProps> = ({
         </div>
       </div>
 
-      <button className={`${buttonClasses} bg-[#ff4757]`}>
+      <button className={`${buttonClasses} bg-[#ff4757]  cursor-pointer`}>
         Request Payment Instructions
       </button>
     </form>

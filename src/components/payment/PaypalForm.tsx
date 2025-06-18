@@ -36,7 +36,7 @@ const PayPalForm: React.FC<PaymentFormProps> = ({
         </span>
       </div>
     </div>
-    <button className={`${buttonClasses} bg-[#0070BA]`}>
+    <button className={`${buttonClasses} bg-[#0070BA] cursor-pointer`}>
       Continue to PayPal
     </button>
   </motion.div>
