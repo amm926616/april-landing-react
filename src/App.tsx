@@ -8,6 +8,7 @@ import HomePage from "./page/HomePage";
 import PaymentPage from "./page/PaymentPage";
 import UpdatesPage from "./page/UpdatePage";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/download" element={<DownloadPage />} />
           </Routes>
           <Analytics />
+          <SpeedInsights />
         </main>
 
         <Footer />
