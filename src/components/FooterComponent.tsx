@@ -8,7 +8,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
-import AprilIcon from '/src/assets/images/april-icon.png';
+import AprilIcon from "/src/assets/images/april-icon.png";
 
 interface FooterProps {
   email?: string;
@@ -74,7 +74,11 @@ const Footer: React.FC<FooterProps> = ({
               whileHover={{ y: -2 }}
               className="flex items-center mb-6"
             >
-               <img src={AprilIcon} alt="April Icon" className="w-5 h-5 object-contain" />
+              <img
+                src={AprilIcon}
+                alt="April Icon"
+                className="w-10 h-10 object-contain"
+              />
               <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
                 April Music Player
               </h3>
