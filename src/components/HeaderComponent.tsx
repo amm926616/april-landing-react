@@ -32,10 +32,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full text-white z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0d1117]/95 backdrop-blur-md py-2 shadow-lg border-b border-gray-800/50"
-          : "bg-transparent py-3 md:py-4"
+          ? "bg-[#0d1117]/95 backdrop-blur-md py-2 shadow-lg border-b border-gray-800/50 text-white" // text-white when scrolled
+          : "bg-transparent py-3 md:py-4 text-red-500" // text-red-500 when at the top
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
