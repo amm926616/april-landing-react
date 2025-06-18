@@ -57,7 +57,6 @@ const Header = () => {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
             <ul className="flex space-x-1 items-center">
               {navItems.map((item) => (
@@ -77,16 +76,20 @@ const Header = () => {
                   </Link>
                 </li>
               ))}
+              {/* Updated Download Button */}
+              <motion.li
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  to="/download"
+                  className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-4 py-2 rounded-lg transition-all duration-300 shadow hover:shadow-md font-semibold text-sm"
+                >
+                  <FaDownload className="mr-2" size={14} />
+                  Download
+                </Link>
+              </motion.li>
             </ul>
-            <motion.a
-              href="/download"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-4 py-2 rounded-lg transition-all duration-300 shadow hover:shadow-md font-semibold text-sm"
-            >
-              <FaDownload className="mr-2" size={14} />
-              Download
-            </motion.a>
           </nav>
 
           {/* Mobile Menu Toggle */}
