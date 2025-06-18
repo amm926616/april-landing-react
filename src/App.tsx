@@ -7,6 +7,7 @@ import DownloadPage from "./page/DownloadPage";
 import HomePage from "./page/HomePage";
 import PaymentPage from "./page/PaymentPage";
 import UpdatesPage from "./page/UpdatePage";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/download" element={<DownloadPage />} />
           </Routes>
+          <Analytics />
         </main>
 
         <Footer />
