@@ -77,7 +77,7 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className={`${option.color} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/50 group`}
+              className={`${option.color} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/50 group cursor-pointer`}
             >
               <div className="flex items-start space-x-4">
                 <motion.div

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import AprilIcon from "/src/assets/images/april-icon.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,20 +41,72 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center"
-          >
-            <Link to="/" className="flex items-center group">
+          <motion.div whileHover="hover" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <div className="relative">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#e63946] to-[#ff6b6b] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                  <span className="text-white text-sm">🎵</span>
-                </div>
-                <div className="absolute inset-0 rounded-full border-2 border-[#e63946] opacity-0 group-hover:opacity-100 animate-ping-slow pointer-events-none transition-opacity"></div>
+                {/* Main Icon */}
+                <motion.img
+                  src={AprilIcon}
+                  alt="April Icon"
+                  className="w-10 h-10 object-contain z-10 relative"
+                  variants={{
+                    hover: {
+                      scale: 1.1,
+                      rotate: 15,
+                      transition: { duration: 0.3 },
+                    },
+                  }}
+                />
+
+                {/* Pulsing Border */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-[#e63946] pointer-events-none"
+                  variants={{
+                    hover: {
+                      scale: 1.3,
+                      opacity: [0, 0.8, 0],
+                      transition: {
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      },
+                    },
+                  }}
+                />
+
+                {/* Sound Waves */}
+                {[1, 2, 3].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute inset-0 rounded-full border border-[#e63946] pointer-events-none"
+                    variants={{
+                      hover: {
+                        scale: 1 + i * 0.3,
+                        opacity: [0, 0.7, 0],
+                        transition: {
+                          delay: i * 0.15,
+                          duration: 1.2,
+                          repeat: Infinity,
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  />
+                ))}
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
+
+              {/* Text */}
+              <motion.span
+                className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] via-[#ff686b] to-[#a8dadc]"
+                variants={{
+                  hover: {
+                    backgroundPosition: "100% 50%",
+                    transition: { duration: 1 },
+                  },
+                }}
+              >
                 April Music Player
-              </span>
+              </motion.span>
             </Link>
           </motion.div>
 
