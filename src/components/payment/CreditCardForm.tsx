@@ -101,7 +101,7 @@ const CreditCardForm: React.FC<PaymentFormProps> = ({
         </div>
       </div>
 
-      <button className={`${buttonClasses} bg-[#ff4757] mt-4`}>
+      <button className={`${buttonClasses} bg-[#ff4757] mt-4 cursor-pointer`}>
         {selectedPlan === "one-time" ? "Pay $40" : "Start Installments"}
       </button>
     </form>

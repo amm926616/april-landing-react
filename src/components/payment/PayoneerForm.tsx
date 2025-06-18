@@ -36,7 +36,9 @@ const PayoneerForm: React.FC<PaymentFormProps> = ({
         </span>
       </div>
     </div>
-    <button className={`${buttonClasses} bg-[#FF4800] hover:bg-[#E04000]`}>
+    <button
+      className={`${buttonClasses} bg-[#FF4800] hover:bg-[#E04000] cursor-pointer`}
+    >
       Continue to Payoneer
     </button>
   </motion.div>

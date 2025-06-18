@@ -31,7 +31,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
     inputClasses:
       "w-full p-3 rounded-lg bg-[#2a2a3a] text-white border border-[#3a3a4a] focus:ring-2 focus:ring-[#ff4757] focus:border-transparent outline-none placeholder-gray-500 transition-all",
     buttonClasses:
-      "w-full py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-all shadow-md",
+      "w-full py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-all shadow-md cursor-pointer",
   };
 
   const renderPaymentForm = () => {
@@ -206,7 +206,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${
                 selectedPaymentMethod === "credit_card"
                   ? "bg-[#ff4757] text-white shadow-lg"
                   : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a] hover:text-white"
@@ -216,7 +216,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
               <CreditCard className="w-5 h-5 mr-2" /> Card
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${
+              className={`flex items-center cursor-pointer px-5 py-2.5 rounded-lg font-medium transition-all ${
                 selectedPaymentMethod === "paypal"
                   ? "bg-[#ff4757] text-white shadow-lg"
                   : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a] hover:text-white"
@@ -226,7 +226,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
               <Wallet className="w-5 h-5 mr-2" /> PayPal
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium  cursor-pointer transition-all ${
                 selectedPaymentMethod === "payoneer"
                   ? "bg-[#ff4757] text-white shadow-lg"
                   : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a] hover:text-white"
@@ -236,7 +236,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
               <Banknote className="w-5 h-5 mr-2" /> Payoneer
             </button>
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${
                 selectedPaymentMethod === "other"
                   ? "bg-[#ff4757] text-white shadow-lg"
                   : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a] hover:text-white"
