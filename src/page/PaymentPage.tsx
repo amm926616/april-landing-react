@@ -206,7 +206,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button
-              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all ${
+              className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${
                 selectedPaymentMethod === "credit_card"
                   ? "bg-[#ff4757] text-white shadow-lg"
                   : "bg-[#2a2a3a] text-gray-300 hover:bg-[#3a3a4a] hover:text-white"
