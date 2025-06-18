@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import AprilIcon from '/src/assets/images/april-icon.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,9 +47,7 @@ const Header = () => {
           >
             <Link to="/" className="flex items-center group">
               <div className="relative">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#e63946] to-[#ff6b6b] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                  <span className="text-white text-sm">🎵</span>
-                </div>
+               <img src={AprilIcon} alt="April Icon" className="w-5 h-5 object-contain" />
                 <div className="absolute inset-0 rounded-full border-2 border-[#e63946] opacity-0 group-hover:opacity-100 animate-ping-slow pointer-events-none transition-opacity"></div>
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
