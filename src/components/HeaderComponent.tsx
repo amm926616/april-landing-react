@@ -43,7 +43,7 @@ const Header = () => {
           {/* Logo */}
           <motion.div whileHover="hover" className="flex items-center">
             <Link to="/" className="flex items-center">
-              <div className="relative">
+              <div className="relative mr-3">
                 {/* Main Icon */}
                 <motion.img
                   src={AprilIcon}
