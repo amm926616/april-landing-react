@@ -24,7 +24,7 @@ export default function SupportHourSection({
         <div>
           <h3 className="text-xl font-semibold mb-4">Leave Us a Message Anytime</h3>
           <p className="text-gray-400">
-            We're not always online, but we’re always listening! Drop your message anytime,
+            We’re always listening! Drop your message anytime,
             and we’ll get back to you as soon as we can. 💌
           </p>
         </div>
