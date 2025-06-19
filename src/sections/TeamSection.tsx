@@ -61,7 +61,12 @@ export default function TeamSection({ id, className }: TeamSectionProps) {
               </div>
               <h3 className="text-xl font-bold">{member.name}</h3>
               <p className="text-[var(--crimson)] mb-2">{member.role}</p>
-              <p className="text-gray-400 text-sm">{member.contact}</p>
+              <a 
+                href={`mailto:${member.contact}`}
+                className="text-gray-400 text-sm hover:text-[var(--crimson)] transition-colors"
+              >
+                {member.contact}
+              </a>
             </div>
           ))}
         </div>
