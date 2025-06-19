@@ -9,10 +9,12 @@ import PaymentPage from "./page/PaymentPage";
 import UpdatesPage from "./page/UpdatePage";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { ScrollToTop } from "./utils/ScrollToTopComponent";
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col relative overflow-hidden text-white">
         <BackgroundComponent />
         <Header />

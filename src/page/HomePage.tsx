@@ -7,6 +7,8 @@ import HeroSection from "../sections/HeroSection";
 import ScreenshotSection from "../sections/ScreenshotSection";
 import SupportSection from "../sections/SupportSection";
 import TestimonialsSection from "../sections/TestimonialsSection";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const sections = [
@@ -18,6 +20,19 @@ export default function HomePage() {
     { id: "testimonials", component: TestimonialsSection },
     { id: "support", component: SupportSection },
   ];
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 0);
+      }
+    }
+  }, [location]);
 
   return (
     <main className="pt-8">
