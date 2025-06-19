@@ -60,7 +60,7 @@ export default function ContactFormSection({
                 value={formData.name}
                 onChange={handleInputChange}
                 className="w-full bg-[#252532] border border-[#3a3a4a] rounded-lg px-4 py-3 text-white focus:border-[var(--crimson)] focus:outline-none"
-                placeholder="John Doe"
+                placeholder="Your Name"
                 required
               />
             </div>
@@ -99,7 +99,7 @@ export default function ContactFormSection({
 
             <button
               type="submit"
-              className="w-full py-3 px-4 bg-[var(--crimson)] hover:bg-[var(--crimson-dark)] text-white rounded-lg font-medium transition"
+              className="w-full py-3 px-4 bg-[var(--crimson)] hover:bg-[var(--crimson-dark)] text-white rounded-lg font-medium transition cursor-pointer"
             >
               Send Message
             </button>
