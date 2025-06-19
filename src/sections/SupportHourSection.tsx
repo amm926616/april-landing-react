@@ -1,5 +1,5 @@
-import { FaPhone } from "react-icons/fa";
-import { FaClock } from "react-icons/fa6";
+// src/sections/SupportHourSection.tsx
+import { FaPhone, FaClock } from "react-icons/fa6";
 import SectionComponent from "../components/SectionComponent";
 
 interface SupportHourSectionProps {
@@ -13,7 +13,7 @@ export default function SupportHourSection({
 }: SupportHourSectionProps) {
   return (
     <SectionComponent id={id} className={className}>
-      <div className="mb-20">
+      <div className="max-w-6xl mx-auto">
         <div className="flex items-center mb-8">
           <FaClock className="text-3xl text-[var(--crimson)] mr-4" />
           <h2 className="text-3xl font-bold">Support Hours</h2>

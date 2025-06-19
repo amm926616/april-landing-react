@@ -1,7 +1,20 @@
+// src/sections/TeamSection.tsx
 import { FaUsers } from "react-icons/fa";
 import SectionComponent from "../components/SectionComponent";
 
-const teamMembers = [
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  contact: string;
+}
+
+interface TeamSectionProps {
+  id: string;
+  className?: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: "John Doe",
     role: "Support Lead",
@@ -26,18 +39,12 @@ const teamMembers = [
     image: "/team/mmm.jpg",
     contact: "mmm@april-music.com",
   },
-  // Add more team members as needed
 ];
-
-interface TeamSectionProps {
-  id: string;
-  className?: string;
-}
 
 export default function TeamSection({ id, className }: TeamSectionProps) {
   return (
     <SectionComponent id={id} className={className}>
-      <div className="mb-20">
+      <div className="max-w-6xl mx-auto">
         <div className="flex items-center mb-8">
           <FaUsers className="text-3xl text-[var(--crimson)] mr-4" />
           <h2 className="text-3xl font-bold">Meet Our Support Team</h2>

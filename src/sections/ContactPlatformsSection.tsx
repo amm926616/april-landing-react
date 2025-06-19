@@ -1,3 +1,4 @@
+// src/sections/ContactPlatformsSection.tsx
 import {
   FaEnvelope,
   FaFacebook,

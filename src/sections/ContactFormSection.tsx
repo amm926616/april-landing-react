@@ -1,3 +1,4 @@
+// src/sections/ContactFormSection.tsx
 import { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa6";
 import SectionComponent from "../components/SectionComponent";
@@ -7,12 +8,17 @@ interface ContactFormSectionProps {
   className?: string;
 }
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export default function ContactFormSection({
   id,
   className,
 }: ContactFormSectionProps) {
-  // State for contact form
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
@@ -30,12 +36,12 @@ export default function ContactFormSection({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
     console.log(formData);
   };
+
   return (
     <SectionComponent id={id} className={className}>
-      <div className="mb-20">
+      <div className="mb-10 max-w-6xl mx-auto">
         <div className="flex items-center mb-8">
           <FaPaperPlane className="text-3xl text-[var(--crimson)] mr-4" />
           <h2 className="text-3xl font-bold">Send Us a Message</h2>
@@ -88,7 +94,7 @@ export default function ContactFormSection({
                 className="w-full bg-[#252532] border border-[#3a3a4a] rounded-lg px-4 py-3 text-white focus:border-[var(--crimson)] focus:outline-none"
                 placeholder="How can we help you?"
                 required
-              ></textarea>
+              />
             </div>
 
             <button
