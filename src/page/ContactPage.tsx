@@ -1,5 +1,8 @@
-import ContactSection from "../sections/ContactSection";
 import { motion } from "framer-motion";
+import ContactPlatformsSection from "../sections/ContactPlatformsSection";
+import TeamSection from "../sections/TeamSection";
+import SupportHourSection from "../sections/SupportHourSection";
+import ContactFormSection from "../sections/ContactFormSection";
 
 export default function ContactPage() {
   return (
@@ -10,7 +13,19 @@ export default function ContactPage() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <ContactSection id="contact" className="scroll-mt-20 min-h-[80vh]" />
+        <ContactPlatformsSection
+          id="contact"
+          className="scroll-mt-20 min-h-[80vh]"
+        />
+        <TeamSection id="team" className="scroll-mt-20 min-h-[80vh]" />
+        <SupportHourSection
+          id="support"
+          className="scroll-mt-20 min-h-[80vh]"
+        />
+        <ContactFormSection
+          id="contact-form"
+          className="scroll-mt-20 min-h-[80vh]"
+        />
       </motion.div>
     </main>
   );
