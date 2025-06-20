@@ -8,6 +8,7 @@ export default function UpdatesPage() {
     { id: "roadmap", component: RoadmapSection },
     { id: "updates", component: UpdatesSection },
     { id: "faq", component: FAQSection },
+
   ];
 
   return (
