@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AprilIcon from "/src/assets/images/april-icon.png";
+import { Link } from "react-router-dom";
 
 interface FooterProps {
   email?: string;
@@ -31,14 +32,31 @@ const Footer: React.FC<FooterProps> = ({
     { icon: <FaYoutube />, href: "#", label: "YouTube" },
   ];
 
+  // homepage /
+  // { id: "about", component: AboutSection },
+  // { id: "features", component: FeaturesSection },
+  // { id: "screenshots", component: ScreenshotSection },
+  // { id: "demo", component: DemoSection },
+  // { id: "comparison", component: ComparisonSection },
+  // { id: "testimonials", component: TestimonialsSection },
+  // { id: "support", component: SupportSection },
+  //
+  // downloadpage /download
+  // paymentpage /payment
+  //
+  // /update
+  // { id: "roadmap", component: RoadmapSection },
+  // { id: "updates", component: UpdatesSection },
+  // { id: "faq", component: FAQSection },
+
   const footerLinks = [
     {
       title: "Product",
       links: [
-        { label: "Features", href: "#features" },
-        { label: "Screenshots", href: "#screenshots" },
-        { label: "Roadmap", href: "#roadmap" },
-        { label: "Download", href: "#download" },
+        { label: "Features", href: "/#features" },
+        { label: "Screenshots", href: "/#screenshots" },
+        { label: "Roadmap", href: "/update/#roadmap" },
+        { label: "Download", href: "/download" },
       ],
     },
     {
@@ -56,7 +74,7 @@ const Footer: React.FC<FooterProps> = ({
         { label: "About Us", href: "#" },
         { label: "Privacy Policy", href: "#" },
         { label: "Terms of Service", href: "#" },
-        { label: "Contact", href: "#contact" },
+        { label: "Contact", href: "/contact" },
       ],
     },
   ];
@@ -64,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="footer"
-      className="bg-gradient-to-b from-[#0d1117] to-[#1a1a24] text-white pt-20 pb-8 border-t border-gray-800/50"
+      className="relative z-20 bg-gradient-to-b from-[#0d1117] to-[#1a1a24] text-white pt-20 pb-8 border-t border-gray-800/50"
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -116,13 +134,25 @@ const Footer: React.FC<FooterProps> = ({
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <motion.li key={linkIndex} whileHover={{ x: 5 }}>
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
-                    >
-                      <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
-                      {link.label}
-                    </a>
+                    {link.href.startsWith("/") ? (
+                      <Link
+                        to={link.href}
+                        className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
+                      >
+                        <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
+                        {link.label}
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>

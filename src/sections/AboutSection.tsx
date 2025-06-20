@@ -10,7 +10,7 @@ const AboutSection = ({ id, className }: AboutSectionProps) => {
   return (
     <SectionComponent
       id={id}
-      className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl ${className}`}
+      className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

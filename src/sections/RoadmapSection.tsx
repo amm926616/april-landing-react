@@ -67,10 +67,7 @@ const RoadmapSection = ({ id, className }: RoadmapSectionProps) => {
   };
 
   return (
-    <section
-      id={id}
-      className={`${className} py-20 relative bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden`}
-    >
+    <section id={id} className={`${className} py-20 `}>
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#e63946] mix-blend-screen filter blur-3xl"></div>
