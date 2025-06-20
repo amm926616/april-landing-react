@@ -43,10 +43,7 @@ interface UpdatesSectionProps {
 
 const UpdatesSection: React.FC<UpdatesSectionProps> = ({ id, className }) => {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
-    >
+    <section id={id} className={`${className} py-20 `}>
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

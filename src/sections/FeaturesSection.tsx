@@ -77,16 +77,7 @@ const features: Feature[] = [
 
 const FeaturesSection: React.FC<FeaturesSectionProps> = ({ id, className }) => {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden rounded-2xl`}
-    >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-red-500 rounded-full mix-blend-overlay filter blur-xl"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-pink-500 rounded-full mix-blend-overlay filter blur-xl"></div>
-      </div>
-
+    <section id={id} className={`${className} py-20`}>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}

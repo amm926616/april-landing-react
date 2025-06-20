@@ -37,10 +37,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   ];
 
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden rounded-2xl`}
-    >
+    <section id={id} className={`${className} py-20 `}>
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-20 w-64 h-64 bg-red-500 rounded-full mix-blend-overlay filter blur-3xl"></div>

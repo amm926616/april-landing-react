@@ -7,9 +7,10 @@ import HeroSection from "../sections/HeroSection";
 import ScreenshotSection from "../sections/ScreenshotSection";
 import SupportSection from "../sections/SupportSection";
 import TestimonialsSection from "../sections/TestimonialsSection";
-import Privacy from "../sections/PrivacyPolicySection"
-import { useLocation } from "react-router-dom";
+
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import PrivacyPolicySection from "../sections/PrivacyPolicySection";
 
 export default function HomePage() {
   const sections = [
@@ -20,7 +21,7 @@ export default function HomePage() {
     { id: "comparison", component: ComparisonSection },
     { id: "testimonials", component: TestimonialsSection },
     { id: "support", component: SupportSection },
-    { id: "privacy",component: Privacy }
+    { id: "privacy", component: PrivacyPolicySection },
   ];
 
   const location = useLocation();
