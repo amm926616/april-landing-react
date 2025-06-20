@@ -10,7 +10,6 @@ import TestimonialsSection from "../sections/TestimonialsSection";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import GeneralPageLayout from "../layouts/GeneralPageLayout";
-import PrivacyPolicySection from "../sections/PrivacyPolicySection";
 
 export default function HomePage() {
   const sections = [
@@ -21,7 +20,6 @@ export default function HomePage() {
     { id: "comparison", component: ComparisonSection },
     { id: "testimonials", component: TestimonialsSection },
     { id: "support", component: SupportSection },
-    { id: "privacy", component: PrivacyPolicySection },
   ];
 
   const location = useLocation();

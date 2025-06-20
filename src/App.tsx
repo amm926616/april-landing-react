@@ -10,6 +10,9 @@ import ContactPage from "./pages/ContactPage";
 import PaymentPage from "./pages/PaymentPage";
 import DownloadPage from "./pages/DownloadPage";
 import FooterComponent from "./components/global/FooterComponent";
+import PrivacyPage from "./pages/PrivacyPage";
+import CopyRightPage from "./pages/TermPage";
+import DocumentationPage from "./pages/DocumentationPage";
 
 const App = () => {
   return (
@@ -26,6 +29,9 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/download" element={<DownloadPage />} />
+            <Route path="/link/privacy" element={<PrivacyPage />} />
+            <Route path="/link/copyright" element={<CopyRightPage />} />
+            <Route path="/link/documentation" element={<DocumentationPage />} />
           </Routes>
           <Analytics />
           <SpeedInsights />

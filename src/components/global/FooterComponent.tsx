@@ -62,19 +62,18 @@ const FooterComponent: React.FC<FooterProps> = ({
     {
       title: "Resources",
       links: [
-        { label: "Documentation", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Tutorials", href: "#" },
-        { label: "API", href: "#" },
+        { label: "Documentation", href: "/link/documentation" },
+        { label: "Blog", href: "/link/blog" },
+        { label: "Tutorials", href: "/link/tutorials" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About Us", href: "#" },
-        { label: "Privacy Policy", href: "/#privacy" },
-        { label: "Terms of Service", href: "#" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact & About Us", href: "/contact" },
+        { label: "Privacy Policy", href: "/link/privacy" },
+        { label: "Terms of Service", href: "/link/terms" },
+        { label: "CopyRight Aggrement", href: "/link/copyright" },
       ],
     },
   ];
