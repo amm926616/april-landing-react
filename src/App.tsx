@@ -3,13 +3,13 @@ import { BackgroundComponent } from "./components/BackgroundComponent";
 import Footer from "./components/FooterComponent";
 import Header from "./components/HeaderComponent";
 import ContactPage from "./page/ContactPage";
-import DownloadPage from "./page/DownloadPage";
 import HomePage from "./page/HomePage";
 import PaymentPage from "./page/PaymentPage";
 import UpdatesPage from "./page/UpdatePage";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ScrollToTop } from "./utils/ScrollToTopComponent";
+import DownloadPage from "./page/DownloadPage";
 
 const App = () => {
   return (

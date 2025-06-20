@@ -11,13 +11,9 @@ import CreditCardForm from "../components/payment/CreditCardForm";
 import OtherPaymentForm from "../components/payment/OtherPaymentForm";
 import PayoneerForm from "../components/payment/PayoneerForm";
 import PayPalForm from "../components/payment/PaypalForm";
+import SectionComponent from "../components/SectionComponent";
 
-interface PaymentSectionProps {
-  id?: string;
-  className?: string;
-}
-
-export default function PaymentPage({ id, className }: PaymentSectionProps) {
+export default function PaymentPage() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("paypal");
   const [selectedPlan, setSelectedPlan] = useState<"one-time" | "installment">(
     "one-time",
@@ -48,7 +44,7 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
   };
 
   return (
-    <section id={id} className={`${className} py-16 `}>
+    <SectionComponent id="/payment" className={"py-16"}>
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -252,6 +248,6 @@ export default function PaymentPage({ id, className }: PaymentSectionProps) {
           </div>
         </motion.div>
       </div>
-    </section>
+    </SectionComponent>
   );
 }

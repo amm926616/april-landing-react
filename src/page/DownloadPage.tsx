@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AiFillApple, AiFillWindows } from "react-icons/ai";
 import { FaLinux } from "react-icons/fa6";
+import SectionComponent from "../components/SectionComponent";
 
 interface Platform {
   name: string;
@@ -41,7 +42,7 @@ const platforms: Platform[] = [
   },
   {
     name: "Linux",
-    icon: <FaLinux className="w-8 h-8" />, // Lucide has a generic Linux icon. If you want a penguin, it's in @lucide/lab.
+    icon: <FaLinux className="w-8 h-8" />,
     downloadUrl: "#",
     systemRequirements: [
       "Ubuntu 20.04 or later",
@@ -54,17 +55,9 @@ const platforms: Platform[] = [
   },
 ];
 
-interface DownloadSectionProps {
-  id?: string;
-  className?: string;
-}
-
-const DownloadPage: React.FC<DownloadSectionProps> = ({ id, className }) => {
+export default function DownloadPage() {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
-    >
+    <SectionComponent id="/download" className={"py-30"}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -133,8 +126,6 @@ const DownloadPage: React.FC<DownloadSectionProps> = ({ id, className }) => {
           ))}
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
-};
-
-export default DownloadPage;
+}
