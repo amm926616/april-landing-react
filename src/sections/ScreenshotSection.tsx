@@ -12,10 +12,7 @@ const ScreenshotSection: React.FC<ScreenshotSectionProps> = ({
   className,
 }) => {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
-    >
+    <section id={id} className={`${className} py-20 `}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -199,7 +196,7 @@ const ScreenshotSection: React.FC<ScreenshotSectionProps> = ({
             </ul>
           </motion.div>
         </motion.div>
-         {/* fourth Screenshot Pair */}
+        {/* fourth Screenshot Pair */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
           initial={{ opacity: 0 }}
@@ -256,7 +253,6 @@ const ScreenshotSection: React.FC<ScreenshotSectionProps> = ({
             </div>
           </motion.div>
         </motion.div>
-
 
         {/* Fifth Screenshot Pair */}
         <motion.div

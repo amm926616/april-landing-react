@@ -7,10 +7,7 @@ interface DemoComponentProps {
 
 const DemoSection: React.FC<DemoComponentProps> = ({ id, className }) => {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
-    >
+    <section id={id} className={`${className} py-20 `}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
