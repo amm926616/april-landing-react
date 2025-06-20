@@ -18,7 +18,7 @@ interface FooterProps {
   discordLink?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({
+const FooterComponent: React.FC<FooterProps> = ({
   email = "support@aprilmusic.app",
   telegramLink = "https://t.me/aprilmusic",
   githubLink = "https://github.com/aprilmusic",
@@ -210,4 +210,4 @@ const Footer: React.FC<FooterProps> = ({
   );
 };
 
-export default Footer;
+export default FooterComponent;

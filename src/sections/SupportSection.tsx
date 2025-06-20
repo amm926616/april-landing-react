@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import SectionComponent from "../components/global/SectionComponent";
 
 interface SupportSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
@@ -52,7 +53,7 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
   ];
 
   return (
-    <section id={id} className={`${className} py-20 `}>
+    <SectionComponent id={id} className={`${className} py-20 `}>
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -114,7 +115,7 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
           ))}
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 };
 

@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
+import SectionComponent from "../components/global/SectionComponent";
 
 interface TestimonialsSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
-const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
+export default function TestimonialsSection({
   id,
   className,
-}) => {
+}: TestimonialsSectionProps) {
   const testimonials = [
     {
       quote:
@@ -37,7 +38,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   ];
 
   return (
-    <section id={id} className={`${className} py-20 `}>
+    <SectionComponent id={id} className={`${className} py-20`}>
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-20 w-64 h-64 bg-red-500 rounded-full mix-blend-overlay filter blur-3xl"></div>
@@ -114,8 +115,6 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           ))}
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
-};
-
-export default TestimonialsSection;
+}

@@ -1,6 +1,6 @@
 // src/sections/TeamSection.tsx
 import { FaUsers } from "react-icons/fa";
-import SectionComponent from "../components/SectionComponent";
+import SectionComponent from "../components/global/SectionComponent";
 
 interface TeamMember {
   name: string;
@@ -61,7 +61,7 @@ export default function TeamSection({ id, className }: TeamSectionProps) {
               </div>
               <h3 className="text-xl font-bold">{member.name}</h3>
               <p className="text-[var(--crimson)] mb-2">{member.role}</p>
-              <a 
+              <a
                 href={`mailto:${member.contact}`}
                 className="text-gray-400 text-sm hover:text-[var(--crimson)] transition-colors"
               >

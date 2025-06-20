@@ -7,14 +7,15 @@ import {
   Wallet,
 } from "lucide-react";
 import { useState } from "react";
-import CreditCardForm from "../components/payment/CreditCardForm";
-import OtherPaymentForm from "../components/payment/OtherPaymentForm";
-import PayoneerForm from "../components/payment/PayoneerForm";
-import PayPalForm from "../components/payment/PaypalForm";
-import SectionComponent from "../components/SectionComponent";
+import CreditCardForm from "../components/pages/payment/CreditCardForm";
+import PayPalForm from "../components/pages/payment/PaypalForm";
+import PayoneerForm from "../components/pages/payment/PayoneerForm";
+import OtherPaymentForm from "../components/pages/payment/OtherPaymentForm";
+import SectionComponent from "../components/global/SectionComponent";
 
 export default function PaymentPage() {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("paypal");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState("credit_card");
   const [selectedPlan, setSelectedPlan] = useState<"one-time" | "installment">(
     "one-time",
   );
@@ -32,10 +33,10 @@ export default function PaymentPage() {
 
   const renderPaymentForm = () => {
     switch (selectedPaymentMethod) {
-      case "paypal":
-        return <PayPalForm {...commonFormProps} />;
       case "credit_card":
         return <CreditCardForm {...commonFormProps} />;
+      case "paypal":
+        return <PayPalForm {...commonFormProps} />;
       case "payoneer":
         return <PayoneerForm {...commonFormProps} />;
       case "other":

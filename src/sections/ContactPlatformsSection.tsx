@@ -9,7 +9,7 @@ import {
   FaTiktok,
   FaYoutube,
 } from "react-icons/fa6";
-import SectionComponent from "../components/SectionComponent";
+import SectionComponent from "../components/global/SectionComponent";
 
 interface ContactPlatformsSectionProps {
   id: string;

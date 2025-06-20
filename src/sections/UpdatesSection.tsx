@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SectionComponent from "../components/global/SectionComponent";
 
 const updates = [
   {
@@ -37,13 +38,13 @@ const updates = [
 ];
 
 interface UpdatesSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
 const UpdatesSection: React.FC<UpdatesSectionProps> = ({ id, className }) => {
   return (
-    <section id={id} className={`${className} py-20 `}>
+    <SectionComponent id={id} className={`${className} py-20 `}>
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -103,7 +104,7 @@ const UpdatesSection: React.FC<UpdatesSectionProps> = ({ id, className }) => {
           ))}
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 };
 

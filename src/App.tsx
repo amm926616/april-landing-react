@@ -1,15 +1,15 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { BackgroundComponent } from "./components/BackgroundComponent";
-import Footer from "./components/FooterComponent";
-import Header from "./components/HeaderComponent";
-import ContactPage from "./page/ContactPage";
-import HomePage from "./page/HomePage";
-import PaymentPage from "./page/PaymentPage";
-import UpdatesPage from "./page/UpdatePage";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ScrollToTop } from "./utils/ScrollToTopComponent";
-import DownloadPage from "./page/DownloadPage";
+import { BackgroundComponent } from "./components/global/BackgroundComponent";
+import HeaderComponent from "./components/global/HeaderComponent";
+import HomePage from "./pages/HomePage";
+import UpdatesPage from "./pages/UpdatePage";
+import ContactPage from "./pages/ContactPage";
+import PaymentPage from "./pages/PaymentPage";
+import DownloadPage from "./pages/DownloadPage";
+import FooterComponent from "./components/global/FooterComponent";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
       <ScrollToTop />
       <div className="min-h-screen flex flex-col relative overflow-hidden text-white">
         <BackgroundComponent />
-        <Header />
+        <HeaderComponent />
 
         <main className="flex-1 w-[97%] mx-auto z-10 pt-20">
           <Routes>
@@ -31,7 +31,7 @@ const App = () => {
           <SpeedInsights />
         </main>
 
-        <Footer />
+        <FooterComponent />
       </div>
     </Router>
   );

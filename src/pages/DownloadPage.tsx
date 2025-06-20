@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AiFillApple, AiFillWindows } from "react-icons/ai";
 import { FaLinux } from "react-icons/fa6";
-import SectionComponent from "../components/SectionComponent";
+import SectionComponent from "../components/global/SectionComponent";
 
 interface Platform {
   name: string;

@@ -4,7 +4,7 @@ import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import AprilIcon from "/src/assets/images/april-icon.png";
 
-const Header = () => {
+const HeaderComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -212,4 +212,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderComponent;

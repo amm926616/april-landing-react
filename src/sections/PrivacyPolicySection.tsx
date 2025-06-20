@@ -1,4 +1,4 @@
-import SectionComponent from "../components/SectionComponent";
+import SectionComponent from "../components/global/SectionComponent";
 
 const PrivacyPolicySection = ({
   id,

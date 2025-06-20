@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import AboutSection from "../sections/AboutSection";
 import ComparisonSection from "../sections/ComparisonSection";
 import DemoSection from "../sections/DemoSection";
@@ -10,6 +9,7 @@ import TestimonialsSection from "../sections/TestimonialsSection";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import GeneralPageLayout from "../layouts/GeneralPageLayout";
 import PrivacyPolicySection from "../sections/PrivacyPolicySection";
 
 export default function HomePage() {
@@ -43,20 +43,7 @@ export default function HomePage() {
         id="#"
         className="scroll-mt-20 min-h-[90vh] flex items-center"
       />
-
-      <div className="space-y-24 pb-24">
-        {sections.map((section, index) => (
-          <motion.div
-            key={section.id}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <section.component id={section.id} className="scroll-mt-20" />
-          </motion.div>
-        ))}
-      </div>
+      <GeneralPageLayout sections={sections} />
     </main>
   );
 }
