@@ -1,6 +1,6 @@
 const PrivacyPolicySection = ({ id, className }: { id: string; className?: string }) => {
   return (
-    <section id={id} className={`py-16 bg-white ${className || ''}`}>
+    <section id={id} className={`py-16 ${className || ''}`}>
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Privacy Policy</h2>        
         <p className="text-gray-600 mb-8">Last updated: {new Date().toLocaleDateString()}</p>
