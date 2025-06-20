@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { AiFillApple, AiFillWindows } from "react-icons/ai";
 import { FaLinux } from "react-icons/fa6";
+import SectionComponent from "../components/SectionComponent";
 
 interface Platform {
   name: string;
@@ -55,16 +56,13 @@ const platforms: Platform[] = [
 ];
 
 interface DownloadSectionProps {
-  id?: string;
+  id: string;
   className?: string;
 }
 
 const DownloadPage: React.FC<DownloadSectionProps> = ({ id, className }) => {
   return (
-    <section
-      id={id}
-      className={`${className} py-20 bg-gradient-to-b from-[#0d0d12] to-[#1a1a24]`}
-    >
+    <SectionComponent id={id} className={`${className} py-30`}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -133,7 +131,7 @@ const DownloadPage: React.FC<DownloadSectionProps> = ({ id, className }) => {
           ))}
         </div>
       </div>
-    </section>
+    </SectionComponent>
   );
 };
 
