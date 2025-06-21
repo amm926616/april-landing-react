@@ -1,18 +1,17 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { ScrollToTop } from "./utils/ScrollToTopComponent";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { BackgroundComponent } from "./components/global/BackgroundComponent";
-import HeaderComponent from "./components/global/HeaderComponent";
-import HomePage from "./pages/HomePage";
-import UpdatesPage from "./pages/UpdatePage";
-import ContactPage from "./pages/ContactPage";
-import PaymentPage from "./pages/PaymentPage";
-import DownloadPage from "./pages/DownloadPage";
 import FooterComponent from "./components/global/FooterComponent";
-import PrivacyPage from "./pages/PrivacyPage";
-import CopyRightPage from "./pages/TermPage";
+import HeaderComponent from "./components/global/HeaderComponent";
+import ContactPage from "./pages/ContactPage";
 import DocumentationPage from "./pages/DocumentationPage";
+import DownloadPage from "./pages/DownloadPage";
+import HomePage from "./pages/HomePage";
+import LegalPage from "./pages/LegalPage";
+import PaymentPage from "./pages/PaymentPage";
+import UpdatesPage from "./pages/UpdatePage";
+import { ScrollToTop } from "./utils/ScrollToTopComponent";
 
 const App = () => {
   return (
@@ -30,8 +29,7 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/download" element={<DownloadPage />} />
-            <Route path="/link/privacy" element={<PrivacyPage />} />
-            <Route path="/link/copyright" element={<CopyRightPage />} />
+            <Route path="/legal" element={<LegalPage />} />
           </Routes>
           <Analytics />
           <SpeedInsights />

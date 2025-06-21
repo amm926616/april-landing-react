@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AprilIcon from "/src/assets/images/april-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface FooterProps {
   email?: string;
@@ -24,6 +24,22 @@ const FooterComponent: React.FC<FooterProps> = ({
   githubLink = "https://github.com/aprilmusic",
   discordLink = "https://discord.gg/aprilmusic",
 }) => {
+  const location = useLocation();
+
+  const handleLinkClick = (href: string) => {
+    const [path, hash] = href.split("#");
+
+    // If it's a hash link and we're on the same page
+    if (hash && (path === location.pathname || path === "")) {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
   const socialLinks = [
     { icon: <FaGithub />, href: githubLink, label: "GitHub" },
     { icon: <FaTelegram />, href: telegramLink, label: "Telegram" },
@@ -45,7 +61,7 @@ const FooterComponent: React.FC<FooterProps> = ({
     {
       title: "Resources",
       links: [
-        { label: "Documentation", href: "/link/documentation" },
+        { label: "Documentation", href: "/documentation" },
         { label: "Blog", href: "/link/blog" },
         { label: "Tutorials", href: "/link/tutorials" },
       ],
@@ -54,9 +70,9 @@ const FooterComponent: React.FC<FooterProps> = ({
       title: "Company",
       links: [
         { label: "Contact & About Us", href: "/contact" },
-        { label: "Privacy Policy", href: "/link/privacy" },
-        { label: "Terms of Service", href: "/link/terms" },
-        { label: "CopyRight Aggrement", href: "/link/copyright" },
+        { label: "Privacy Policy", href: "/legal/#privacy-policy" },
+        { label: "Terms of Service", href: "/legal/#terms-of-service" },
+        { label: "CopyRight Aggrement", href: "/legal/#copyright-agreement" },
       ],
     },
   ];
@@ -116,25 +132,14 @@ const FooterComponent: React.FC<FooterProps> = ({
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <motion.li key={linkIndex} whileHover={{ x: 5 }}>
-                    {link.href.startsWith("/") ? (
-                      <Link
-                        to={link.href}
-                        className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
-                      >
-                        <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
-                        {link.label}
-                      </Link>
-                    ) : (
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
-                        {link.label}
-                      </a>
-                    )}
+                    <Link
+                      to={link.href}
+                      onClick={() => handleLinkClick(link.href)}
+                      className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
+                    >
+                      <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
+                      {link.label}
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
