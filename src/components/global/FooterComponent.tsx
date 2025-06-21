@@ -32,30 +32,13 @@ const FooterComponent: React.FC<FooterProps> = ({
     { icon: <FaYoutube />, href: "#", label: "YouTube" },
   ];
 
-  // homepage /
-  // { id: "about", component: AboutSection },
-  // { id: "features", component: FeaturesSection },
-  // { id: "screenshots", component: ScreenshotSection },
-  // { id: "demo", component: DemoSection },
-  // { id: "comparison", component: ComparisonSection },
-  // { id: "testimonials", component: TestimonialsSection },
-  // { id: "support", component: SupportSection },
-  //
-  // downloadpage /download
-  // paymentpage /payment
-  //
-  // /update
-  // { id: "roadmap", component: RoadmapSection },
-  // { id: "updates", component: UpdatesSection },
-  // { id: "faq", component: FAQSection },
-
   const footerLinks = [
     {
       title: "Product",
       links: [
         { label: "Features", href: "/#features" },
         { label: "Screenshots", href: "/#screenshots" },
-        { label: "Roadmap", href: "/update/#roadmap" },
+        { label: "Roadmap", href: "/updates/#roadmap" },
         { label: "Download", href: "/download" },
       ],
     },

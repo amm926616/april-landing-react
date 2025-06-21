@@ -24,7 +24,7 @@ const HeaderComponent = () => {
   };
 
   const navItems = [
-    { id: "about", label: "About", path: "/" },
+    { id: "documentation", label: "Documentation", path: "/documentation" },
     { id: "updates", label: "Updates", path: "/updates" },
     { id: "contact", label: "Contact", path: "/contact" },
     { id: "payment", label: "Payment", path: "/payment" },
