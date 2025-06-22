@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import { useState, useEffect } from "react";
 import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
@@ -20,9 +20,9 @@ const HeaderComponent = () => {
 
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; // Prevent background scrolling when menu is open
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Restore background scrolling when menu closes
+      document.body.style.overflow = "auto";
     }
   }, [menuOpen]);
 
@@ -160,66 +160,69 @@ const HeaderComponent = () => {
           </motion.button>
         </div>
 
-        {menuOpen && (
-          <>
-            {/* Backdrop for closing menu on outside click */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ ease: "easeOut", duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 z-30 md:hidden"
-              onClick={toggleMenu} // Simply closes the menu
-            />
+        {/* --- Wrap conditional rendering with AnimatePresence --- */}
+        <AnimatePresence>
+          {menuOpen && (
+            <>
+              {/* Backdrop for closing menu on outside click */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
+                className="fixed inset-0 bg-black/50 z-30 md:hidden"
+                onClick={toggleMenu}
+              />
 
-            {/* Mobile Menu */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ ease: "easeOut", duration: 0.3 }}
-              className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
-            >
-              <div className="flex flex-col h-full">
-                <ul className="space-y-3">
-                  {navItems.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        to={item.path}
-                        className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
-                          location.pathname === item.path
-                            ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
-                            : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                        }`}
-                        onClick={toggleMenu}
-                      >
-                        {item.id === "payment" ? (
-                          <span className="flex items-center">
-                            <FaShoppingCart className="mr-3" /> {item.label}
-                          </span>
-                        ) : (
-                          item.label
-                        )}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              {/* Mobile Menu */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
+                className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
+              >
+                <div className="flex flex-col h-full">
+                  <ul className="space-y-3">
+                    {navItems.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          to={item.path}
+                          className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
+                            location.pathname === item.path
+                              ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
+                              : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                          }`}
+                          onClick={toggleMenu}
+                        >
+                          {item.id === "payment" ? (
+                            <span className="flex items-center">
+                              <FaShoppingCart className="mr-3" /> {item.label}
+                            </span>
+                          ) : (
+                            item.label
+                          )}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="mt-auto mb-6">
-                  <motion.a
-                    href="/download"
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
-                    onClick={toggleMenu}
-                  >
-                    <FaDownload className="mr-3" />
-                    Download Now
-                  </motion.a>
+                  <div className="mt-auto mb-6">
+                    <motion.a
+                      href="/download"
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
+                      onClick={toggleMenu}
+                    >
+                      <FaDownload className="mr-3" />
+                      Download Now
+                    </motion.a>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          </>
-        )}
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
