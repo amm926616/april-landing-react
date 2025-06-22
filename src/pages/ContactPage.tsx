@@ -1,7 +1,7 @@
 import GeneralPageLayout from "../layouts/GeneralPageLayout";
-import ContactFormSection from "../sections/ContactFormSection";
-import SupportHourSection from "../sections/SupportHourSection";
-import TeamSection from "../sections/TeamSection";
+import ContactFormSection from "../sections/contact/ContactFormSection";
+import SupportHourSection from "../sections/contact/SupportHourSection";
+import TeamSection from "../sections/contact/TeamSection";
 
 const sections = [
   { id: "team", component: TeamSection },

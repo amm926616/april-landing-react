@@ -10,7 +10,6 @@ import DownloadPage from "./pages/DownloadPage";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import PaymentPage from "./pages/PaymentPage";
-import UpdatesPage from "./pages/UpdatePage";
 import { ScrollToTop } from "./utils/ScrollToTopComponent";
 
 const App = () => {
@@ -24,7 +23,6 @@ const App = () => {
         <main className="flex-1 w-[97%] mx-auto z-10 pt-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/updates" element={<UpdatesPage />} />
             <Route path="/documentation" element={<DocumentationPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/payment" element={<PaymentPage />} />

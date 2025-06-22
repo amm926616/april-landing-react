@@ -1,11 +1,11 @@
-import AboutSection from "../sections/AboutSection";
-import ComparisonSection from "../sections/ComparisonSection";
-import DemoSection from "../sections/DemoSection";
-import FeaturesSection from "../sections/FeaturesSection";
-import HeroSection from "../sections/HeroSection";
-import ScreenshotSection from "../sections/ScreenshotSection";
-import SupportSection from "../sections/SupportSection";
-import TestimonialsSection from "../sections/TestimonialsSection";
+import AboutSection from "../sections/home/AboutSection";
+import ComparisonSection from "../sections/home/ComparisonSection";
+import DemoSection from "../sections/home/DemoSection";
+import FeaturesSection from "../sections/home/FeaturesSection";
+import HeroSection from "../sections/home/HeroSection";
+import ScreenshotSection from "../sections/home/ScreenshotSection";
+import SupportSection from "../sections/home/SupportSection";
+import TestimonialsSection from "../sections/home/TestimonialsSection";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";

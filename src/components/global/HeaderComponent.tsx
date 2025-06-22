@@ -7,7 +7,7 @@ import {
   FaTimes,
   FaArrowLeft,
 } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import AprilIcon from "/src/assets/images/april-icon.png";
 
 const HeaderComponent = () => {
@@ -27,7 +27,7 @@ const HeaderComponent = () => {
   // Effect to manage body scroll and browser history for the mobile menu
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
       window.history.pushState({ menuOpen: true }, "");
 
       // Explicitly type the event for popstate
@@ -41,15 +41,15 @@ const HeaderComponent = () => {
 
       // Cleanup function
       return () => {
-        document.body.style.overflow = "auto"; 
+        document.body.style.overflow = "auto";
         window.removeEventListener("popstate", handlePopState);
-  
+
         if (window.history.state && window.history.state.menuOpen) {
           window.history.back(); // Go back to the state before menu was opened
         }
       };
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
       if (window.history.state && window.history.state.menuOpen) {
         window.history.back();
       }
@@ -66,7 +66,6 @@ const HeaderComponent = () => {
 
   const navItems = [
     { id: "documentation", label: "Documentation", path: "/documentation" },
-    { id: "updates", label: "Updates", path: "/updates" },
     { id: "contact", label: "Contact", path: "/contact" },
     { id: "payment", label: "Payment", path: "/payment" },
   ];
