@@ -67,117 +67,141 @@ export default function PaymentPage() {
           </p>
         </motion.div>
 
+        {/* Pricing Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-12"
+        >
+          <div className="bg-[#1e1e2a] p-1 rounded-full inline-flex">
+            <button
+              className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${
+                selectedPlan === "one-time"
+                  ? "bg-[#ff4757] text-white"
+                  : "text-gray-400 hover:text-white"
+              }`}
+              onClick={() => setSelectedPlan("one-time")}
+            >
+              One-Time Payment
+            </button>
+            <button
+              className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${
+                selectedPlan === "installment"
+                  ? "bg-[#ff4757] text-white"
+                  : "text-gray-400 hover:text-white"
+              }`}
+              onClick={() => setSelectedPlan("installment")}
+            >
+              Installment Plan
+            </button>
+          </div>
+        </motion.div>
+
         {/* Pricing Cards - Now directly clickable */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* One-time Payment Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            animate={{
+              borderColor:
+                selectedPlan === "one-time" ? "#ff4757" : "transparent",
+            }}
+            transition={{ duration: 0.6, borderColor: { duration: 0.3 } }}
             viewport={{ once: true }}
-            onClick={() => setSelectedPlan("one-time")}
-            className={`relative bg-[#1e1e2a] p-8 rounded-2xl shadow-xl border-2 ${
-              selectedPlan === "one-time"
-                ? "border-[#ff4757]"
-                : "border-transparent hover:border-[#3a3a4a]"
-            } transition-all cursor-pointer group overflow-hidden`}
+            className="relative bg-[#1e1e2a] p-8 rounded-2xl shadow-xl border-2"
           >
             {selectedPlan === "one-time" && (
-              <div className="absolute top-0 right-0 w-32 bg-[#ff4757] text-white text-xs font-bold px-3 py-1 text-center transform rotate-45 translate-x-8 translate-y-6 shadow-lg">
-                SELECTED
+              <div className="absolute top-0 right-0 bg-[#ff4757] text-white text-xs font-bold py-1 px-4 rounded-bl-lg rounded-tr-lg">
+                BEST VALUE
               </div>
             )}
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                One-Time Payment
-              </h3>
 
-              <p className="text-gray-400 mb-6">
+            <p className="text-gray-200 mb-5">
+              <strong>
                 Pay once and get lifetime access to all features and updates.
-              </p>
+              </strong>
+            </p>
 
-              <div className="mb-8">
-                <span className="text-5xl font-bold text-white">$40</span>
-                <span className="text-gray-500 ml-2">one time</span>
-              </div>
-
-              <ul className="space-y-3 text-gray-300 mb-8">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Full access to all Pro features</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>**Lifetime** ownership</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Free updates forever</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Priority support</span>
-                </li>
-              </ul>
+            <div className="mb-8">
+              <span className="text-5xl font-bold text-white">$40</span>
+              <span className="text-gray-500 ml-2">one time</span>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#2a2a3a] opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Full access to all Pro features</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>
+                  <strong>Lifetime</strong> ownership
+                </span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Free updates forever</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Priority support</span>
+              </li>
+            </ul>
           </motion.div>
 
           {/* Installment Payment Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            animate={{
+              borderColor:
+                selectedPlan === "installment" ? "#ff4757" : "transparent",
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1,
+              borderColor: { duration: 0.3 },
+            }}
             viewport={{ once: true }}
-            onClick={() => setSelectedPlan("installment")}
-            className={`relative bg-[#1e1e2a] p-8 rounded-2xl shadow-xl border-2 ${
-              selectedPlan === "installment"
-                ? "border-[#ff4757]"
-                : "border-transparent hover:border-[#3a3a4a]"
-            } transition-all cursor-pointer group overflow-hidden`}
+            className="bg-[#1e1e2a] p-8 rounded-2xl shadow-xl border-2"
           >
-            {selectedPlan === "installment" && (
-              <div className="absolute top-0 right-0 w-32 bg-[#ff4757] text-white text-xs font-bold px-3 py-1 text-center transform rotate-45 translate-x-8 translate-y-6 shadow-lg">
-                SELECTED
-              </div>
-            )}
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Installment Plan
-              </h3>
-
-              <p className="text-gray-400 mb-6">
+            <p className="text-gray-200 mb-5">
+              <strong>
                 Spread your payment over 3 months with convenient installments.
-              </p>
+              </strong>
+            </p>
 
-              <div className="mb-8">
-                <span className="text-5xl font-bold text-white">$15</span>
-                <span className="text-gray-500 ml-2">/month</span>
-                <div className="text-gray-400 text-sm mt-1">
-                  (Total $45 after 3 months)
-                </div>
+            <div className="mb-8">
+              <span className="text-5xl font-bold text-white">$15</span>
+              <span className="text-gray-500 ml-2">/month</span>
+              <div className="text-gray-400 text-sm mt-1">
+                (Total $45 after 3 months)
               </div>
-
-              <ul className="space-y-3 text-gray-300 mb-8">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Access to all Pro features</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Full ownership after final payment</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Free updates included</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Cancel anytime</span>
-                </li>
-              </ul>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#2a2a3a] opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Access to all Pro features</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Full ownership after final payment</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Free updates included</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-[#ff4757] mr-3 mt-0.5 flex-shrink-0" />
+                <span>Cancel anytime</span>
+              </li>
+            </ul>
           </motion.div>
         </div>
 
