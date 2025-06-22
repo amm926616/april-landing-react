@@ -1,4 +1,4 @@
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 import { motion } from "framer-motion";
 
 type TermsOfServiceSectionProps = {
@@ -138,7 +138,9 @@ const TermsOfServiceSection = ({
           {/* Introduction */}
           <div className="text-center py-4 border-b border-gray-600">
             <p className="text-gray-300 italic text-lg">
-              "Your music, your rules, your responsibility. April empowers you to enjoy your personal music collection while respecting the digital music ecosystem."
+              "Your music, your rules, your responsibility. April empowers you
+              to enjoy your personal music collection while respecting the
+              digital music ecosystem."
             </p>
           </div>
 
@@ -161,7 +163,8 @@ const TermsOfServiceSection = ({
               Questions About These Terms?
             </h3>
             <p className="text-gray-300">
-              If you have questions about these Terms of Service, please contact us through:
+              If you have questions about these Terms of Service, please contact
+              us through:
             </p>
             <ul className="list-disc pl-5 mt-2 text-gray-300 space-y-1">
               <li>Our official website support section</li>
@@ -180,13 +183,16 @@ const TermsOfServiceSection = ({
           className="text-center mt-12 text-gray-400 text-sm space-y-2"
         >
           <p>
-            These terms are designed to protect both users and developers while promoting responsible music enjoyment.
+            These terms are designed to protect both users and developers while
+            promoting responsible music enjoyment.
           </p>
           <p>
-            By using April Music Player, you acknowledge that you have read, understood, and agreed to these Terms of Service.
+            By using April Music Player, you acknowledge that you have read,
+            understood, and agreed to these Terms of Service.
           </p>
           <p className="mt-4 text-xs">
-            © {new Date().getFullYear()} April Music Player. Terms subject to change with notice.
+            © {new Date().getFullYear()} April Music Player. Terms subject to
+            change with notice.
           </p>
         </motion.div>
       </div>

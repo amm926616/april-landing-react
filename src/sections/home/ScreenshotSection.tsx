@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import image1 from "../assets/images/screenshots/Screenshot 2025-05-10 205551.png";
-import image2 from "../assets/images/screenshots/Screenshot 2025-05-10 210243.png";
+import image1 from "../../assets/images/screenshots/Screenshot 2025-05-10 205551.png";
+import image2 from "../../assets/images/screenshots/Screenshot 2025-05-10 210243.png";
 
 interface ScreenshotSectionProps {
   id?: string;

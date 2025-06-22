@@ -1,6 +1,6 @@
 // src/sections/TeamSection.tsx
 import { FaUsers } from "react-icons/fa";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 
 interface TeamMember {
   name: string;

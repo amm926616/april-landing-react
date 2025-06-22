@@ -1,4 +1,4 @@
-import april_icon from "../assets/images/april-icon.png";
+import april_icon from "../../assets/images/april-icon.png";
 import SectionComponent from "../../components/global/SectionComponent";
 
 interface AboutSectionProps {

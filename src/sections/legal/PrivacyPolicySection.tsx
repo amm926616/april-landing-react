@@ -1,4 +1,4 @@
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 import { motion } from "framer-motion";
 
 type PrivacyPolicySectionProps = {

@@ -1,7 +1,7 @@
 // src/sections/ContactFormSection.tsx
 import { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa6";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 
 interface ContactFormSectionProps {
   id: string;

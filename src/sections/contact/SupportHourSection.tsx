@@ -1,6 +1,6 @@
 // src/sections/SupportHourSection.tsx
 import { FaPhone, FaClock } from "react-icons/fa6";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 
 interface SupportHourSectionProps {
   id: string;

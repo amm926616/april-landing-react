@@ -1,6 +1,6 @@
-import DocumentationSectionComponent from "../components/pages/documentation/DocumentationSectionComponent";
-import shortcutGroups from "../data/shortcuts.data";
-import { DocumentationType } from "../types/documentations.type";
+import DocumentationSectionComponent from "../../components/pages/documentation/DocumentationSectionComponent";
+import shortcutGroups from "../../data/shortcuts.data";
+import { DocumentationType } from "../../types/documentations.type";
 
 const shortcutSectionProps: DocumentationType = {
   id: "shortcut",

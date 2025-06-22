@@ -1,6 +1,6 @@
-import DocumentationSectionComponent from "../components/pages/documentation/DocumentationSectionComponent";
-import menuBarGroups from "../data/menubar.data";
-import { DocumentationType } from "../types/documentations.type";
+import DocumentationSectionComponent from "../../components/pages/documentation/DocumentationSectionComponent";
+import menuBarGroups from "../../data/menubar.data";
+import { DocumentationType } from "../../types/documentations.type";
 
 const menubarSectionProps: DocumentationType = {
   id: "menubar",
