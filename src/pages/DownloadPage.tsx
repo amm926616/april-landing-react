@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Import Variants
 import React from "react";
 import { AiFillApple, AiFillWindows } from "react-icons/ai";
 import { FaLinux } from "react-icons/fa6";
@@ -55,7 +55,8 @@ const platforms: Platform[] = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
+  // Explicitly type containerVariants
   hidden: {
     opacity: 0,
     transition: {
@@ -72,7 +73,8 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
+  // Explicitly type cardVariants
   hidden: {
     opacity: 0,
     y: 20,
@@ -130,6 +132,8 @@ export default function DownloadPage() {
               <motion.div
                 key={platform.name}
                 variants={cardVariants}
+                initial="hidden"
+                animate="show"
                 whileHover={{ y: -4, borderColor: "#e63946" }}
                 className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg border border-[#2e2e3a] transition-colors flex flex-col"
                 style={{
@@ -156,7 +160,6 @@ export default function DownloadPage() {
                   <h4 className="font-semibold text-white mb-3 text-center">
                     System Requirements:
                   </h4>
-                  {/* Add w-fit and mx-auto to the ul element below */}
                   <ul className="space-y-2 w-fit mx-auto">
                     {platform.systemRequirements.map((req, i) => (
                       <li key={i} className="flex items-start">
