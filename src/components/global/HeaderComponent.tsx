@@ -22,8 +22,6 @@ const HeaderComponent = () => {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden"; // Prevent background scrolling when menu is open
-      // Push a new state to history when menu opens
-      // This allows the browser's native back button to close the menu
       window.history.pushState({ menuOpen: true }, "");
 
       const handlePopState = (event: PopStateEvent) => {
@@ -32,15 +30,13 @@ const HeaderComponent = () => {
         }
       };
 
-      // Add a listener for the popstate event (browser back/forward button)
       window.addEventListener("popstate", handlePopState);
 
-      // Cleanup function
       return () => {
         document.body.style.overflow = "auto"; // Restore background scrolling when menu closes
         window.removeEventListener("popstate", handlePopState);
         if (window.history.state && window.history.state.menuOpen) {
-          window.history.back(); // Go back to the state before menu was opened
+          window.history.back();
         }
       };
     } else {
@@ -49,7 +45,7 @@ const HeaderComponent = () => {
         window.history.back();
       }
     }
-  }, [menuOpen]); // Re-run this effect when menuOpen changes
+  }, [menuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -172,14 +168,13 @@ const HeaderComponent = () => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Toggle (remains in header, visible) */}
+          {/* Mobile Menu Toggle */}
           <motion.button
             onClick={toggleMenu}
             whileTap={{ scale: 0.9 }}
             className="md:hidden text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
             aria-label="Menu"
           >
-            {/* The 'X' icon is here when the menu is open */}
             {menuOpen ? (
               <FaTimes className="w-5 h-5" />
             ) : (
@@ -188,55 +183,66 @@ const HeaderComponent = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* --- Mobile Menu Overlay and Backdrop --- */}
         {menuOpen && (
-          <motion.div
-            // Framer Motion properties for side slide animation
-            initial={{ x: "100%" }} 
-            animate={{ x: 0 }} 
-            exit={{ x: "100%" }} 
-            transition={{ ease: "easeOut", duration: 0.3 }} 
-            // TailWind CSS classes for right-aligned, full-height, partial-width menu
-            className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
-          >
-            <div className="flex flex-col h-full">
-              <ul className="space-y-3">
-                {navItems.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      to={item.path}
-                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
-                        location.pathname === item.path
-                          ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
-                          : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                      }`}
-                      onClick={toggleMenu} // Close menu when navigating
-                    >
-                      {item.id === "payment" ? (
-                        <span className="flex items-center">
-                          <FaShoppingCart className="mr-3" /> {item.label}
-                        </span>
-                      ) : (
-                        item.label
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <>
+            {/* Backdrop for closing menu on outside click */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: "easeOut", duration: 0.3 }}
+              className="fixed inset-0 bg-black/50 z-30 md:hidden"
+              onClick={toggleMenu} // Closes the menu when the backdrop is clicked
+            />
 
-              <div className="mt-auto mb-6">
-                <motion.a
-                  href="/download"
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
-                  onClick={toggleMenu} // Close menu when navigating
-                >
-                  <FaDownload className="mr-3" />
-                  Download Now
-                </motion.a>
+            {/* Mobile Menu */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ ease: "easeOut", duration: 0.3 }}
+              className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
+            >
+              <div className="flex flex-col h-full">
+                <ul className="space-y-3">
+                  {navItems.map((item) => (
+                    <li key={item.id}>
+                      <Link
+                        to={item.path}
+                        className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
+                          location.pathname === item.path
+                            ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
+                            : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                        }`}
+                        onClick={toggleMenu}
+                      >
+                        {item.id === "payment" ? (
+                          <span className="flex items-center">
+                            <FaShoppingCart className="mr-3" /> {item.label}
+                          </span>
+                        ) : (
+                          item.label
+                        )}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto mb-6">
+                  <motion.a
+                    href="/download"
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
+                    onClick={toggleMenu}
+                  >
+                    <FaDownload className="mr-3" />
+                    Download Now
+                  </motion.a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </div>
     </header>
