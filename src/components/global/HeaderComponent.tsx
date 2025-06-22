@@ -18,32 +18,11 @@ const HeaderComponent = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Effect to manage body scroll and browser history for the mobile menu
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden"; // Prevent background scrolling when menu is open
-      window.history.pushState({ menuOpen: true }, "");
-
-      const handlePopState = (event: PopStateEvent) => {
-        if (!event.state || !event.state.menuOpen) {
-          setMenuOpen(false);
-        }
-      };
-
-      window.addEventListener("popstate", handlePopState);
-
-      return () => {
-        document.body.style.overflow = "auto"; // Restore background scrolling when menu closes
-        window.removeEventListener("popstate", handlePopState);
-        if (window.history.state && window.history.state.menuOpen) {
-          window.history.back();
-        }
-      };
     } else {
-      document.body.style.overflow = "auto";
-      if (window.history.state && window.history.state.menuOpen) {
-        window.history.back();
-      }
+      document.body.style.overflow = "auto"; // Restore background scrolling when menu closes
     }
   }, [menuOpen]);
 
@@ -68,7 +47,6 @@ const HeaderComponent = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <motion.div whileHover="hover" className="flex items-center">
             <Link to="/" className="flex items-center">
               <div className="relative mr-3">
@@ -168,7 +146,6 @@ const HeaderComponent = () => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Toggle */}
           <motion.button
             onClick={toggleMenu}
             whileTap={{ scale: 0.9 }}
@@ -183,7 +160,6 @@ const HeaderComponent = () => {
           </motion.button>
         </div>
 
-        {/* --- Mobile Menu Overlay and Backdrop --- */}
         {menuOpen && (
           <>
             {/* Backdrop for closing menu on outside click */}
@@ -193,7 +169,7 @@ const HeaderComponent = () => {
               exit={{ opacity: 0 }}
               transition={{ ease: "easeOut", duration: 0.3 }}
               className="fixed inset-0 bg-black/50 z-30 md:hidden"
-              onClick={toggleMenu} // Closes the menu when the backdrop is clicked
+              onClick={toggleMenu} // Simply closes the menu
             />
 
             {/* Mobile Menu */}
