@@ -120,11 +120,10 @@ export default function PaymentPage() {
               </div>
             )}
 
-            <h3 className="text-2xl font-bold text-white mb-4">
-              One-Time Payment
-            </h3>
-            <p className="text-gray-400 mb-6">
-              Pay once and get lifetime access to all features and updates.
+            <p className="text-gray-200 mb-5">
+              <strong>
+                Pay once and get lifetime access to all features and updates.
+              </strong>
             </p>
 
             <div className="mb-8">
@@ -171,11 +170,10 @@ export default function PaymentPage() {
             viewport={{ once: true }}
             className="bg-[#1e1e2a] p-8 rounded-2xl shadow-xl border-2"
           >
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Installment Plan
-            </h3>
-            <p className="text-gray-400 mb-6">
-              Spread your payment over 3 months with convenient installments.
+            <p className="text-gray-200 mb-5">
+              <strong>
+                Spread your payment over 3 months with convenient installments.
+              </strong>
             </p>
 
             <div className="mb-8">
