@@ -1,13 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import {
-  FaBars,
-  FaDownload,
-  FaShoppingCart,
-  FaTimes,
-  FaArrowLeft,
-} from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom"; 
+import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 import AprilIcon from "/src/assets/images/april-icon.png";
 
 const HeaderComponent = () => {
@@ -27,29 +21,30 @@ const HeaderComponent = () => {
   // Effect to manage body scroll and browser history for the mobile menu
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden"; // Prevent background scrolling when menu is open
+      // Push a new state to history when menu opens
+      // This allows the browser's native back button to close the menu
       window.history.pushState({ menuOpen: true }, "");
 
-      // Explicitly type the event for popstate
       const handlePopState = (event: PopStateEvent) => {
         if (!event.state || !event.state.menuOpen) {
           setMenuOpen(false);
         }
       };
 
+      // Add a listener for the popstate event (browser back/forward button)
       window.addEventListener("popstate", handlePopState);
 
       // Cleanup function
       return () => {
-        document.body.style.overflow = "auto"; 
+        document.body.style.overflow = "auto"; // Restore background scrolling when menu closes
         window.removeEventListener("popstate", handlePopState);
-  
         if (window.history.state && window.history.state.menuOpen) {
           window.history.back(); // Go back to the state before menu was opened
         }
       };
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
       if (window.history.state && window.history.state.menuOpen) {
         window.history.back();
       }
@@ -58,10 +53,6 @@ const HeaderComponent = () => {
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
-  };
-
-  const handleBackButtonClick = () => {
-    setMenuOpen(false); // This will trigger the useEffect to pop the history state
   };
 
   const navItems = [
@@ -181,13 +172,14 @@ const HeaderComponent = () => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle (remains in header, visible) */}
           <motion.button
             onClick={toggleMenu}
             whileTap={{ scale: 0.9 }}
             className="md:hidden text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
             aria-label="Menu"
           >
+            {/* The 'X' icon is here when the menu is open */}
             {menuOpen ? (
               <FaTimes className="w-5 h-5" />
             ) : (
@@ -196,22 +188,18 @@ const HeaderComponent = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden fixed inset-0 bg-[#0d1117]/95 backdrop-blur-md pt-16 px-4 z-40"
+            // Framer Motion properties for side slide animation
+            initial={{ x: "100%" }} 
+            animate={{ x: 0 }} 
+            exit={{ x: "100%" }} 
+            transition={{ ease: "easeOut", duration: 0.3 }} 
+            // TailWind CSS classes for right-aligned, full-height, partial-width menu
+            className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
           >
             <div className="flex flex-col h-full">
-              {/* "Back" button for mobile menu */}
-              <button
-                onClick={handleBackButtonClick}
-                className="flex items-center text-gray-300 hover:text-white mb-4 px-4 py-3 rounded-lg text-lg font-medium hover:bg-gray-800/50 transition-colors self-start"
-              >
-                <FaArrowLeft className="mr-3" /> Back
-              </button>
               <ul className="space-y-3">
                 {navItems.map((item) => (
                   <li key={item.id}>
