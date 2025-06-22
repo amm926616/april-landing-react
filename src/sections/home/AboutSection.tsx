@@ -1,5 +1,5 @@
 import april_icon from "../assets/images/april-icon.png";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 
 interface AboutSectionProps {
   id: string;

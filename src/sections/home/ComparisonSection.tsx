@@ -1,5 +1,5 @@
 import React from "react";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 
 interface ComparisonSectionProps {
   id: string;

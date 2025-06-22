@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import SectionComponent from "../components/global/SectionComponent";
+import SectionComponent from "../../components/global/SectionComponent";
 import { Link } from "react-router-dom";
-import BreathingAprilLogoComponent from "../components/pages/home/BreathingAprilLogoComponent";
+import BreathingAprilLogoComponent from "../../components/pages/home/BreathingAprilLogoComponent";
 
 interface HeroSectionProps {
   id: string;
