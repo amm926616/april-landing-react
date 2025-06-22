@@ -1,12 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import { useState, useEffect } from "react";
-import {
-  FaBars,
-  FaDownload,
-  FaShoppingCart,
-  FaTimes,
-  FaArrowLeft,
-} from "react-icons/fa";
+import { FaBars, FaDownload, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import AprilIcon from "/src/assets/images/april-icon.png";
 
@@ -24,44 +18,16 @@ const HeaderComponent = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Effect to manage body scroll and browser history for the mobile menu
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
-      window.history.pushState({ menuOpen: true }, "");
-
-      // Explicitly type the event for popstate
-      const handlePopState = (event: PopStateEvent) => {
-        if (!event.state || !event.state.menuOpen) {
-          setMenuOpen(false);
-        }
-      };
-
-      window.addEventListener("popstate", handlePopState);
-
-      // Cleanup function
-      return () => {
-        document.body.style.overflow = "auto";
-        window.removeEventListener("popstate", handlePopState);
-
-        if (window.history.state && window.history.state.menuOpen) {
-          window.history.back(); // Go back to the state before menu was opened
-        }
-      };
     } else {
       document.body.style.overflow = "auto";
-      if (window.history.state && window.history.state.menuOpen) {
-        window.history.back();
-      }
     }
-  }, [menuOpen]); // Re-run this effect when menuOpen changes
+  }, [menuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
-  };
-
-  const handleBackButtonClick = () => {
-    setMenuOpen(false); // This will trigger the useEffect to pop the history state
   };
 
   const navItems = [
@@ -80,7 +46,6 @@ const HeaderComponent = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <motion.div whileHover="hover" className="flex items-center">
             <Link to="/" className="flex items-center">
               <div className="relative mr-3">
@@ -180,7 +145,6 @@ const HeaderComponent = () => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Toggle */}
           <motion.button
             onClick={toggleMenu}
             whileTap={{ scale: 0.9 }}
@@ -195,60 +159,69 @@ const HeaderComponent = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden fixed inset-0 bg-[#0d1117]/95 backdrop-blur-md pt-16 px-4 z-40"
-          >
-            <div className="flex flex-col h-full">
-              {/* "Back" button for mobile menu */}
-              <button
-                onClick={handleBackButtonClick}
-                className="flex items-center text-gray-300 hover:text-white mb-4 px-4 py-3 rounded-lg text-lg font-medium hover:bg-gray-800/50 transition-colors self-start"
-              >
-                <FaArrowLeft className="mr-3" /> Back
-              </button>
-              <ul className="space-y-3">
-                {navItems.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      to={item.path}
-                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
-                        location.pathname === item.path
-                          ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
-                          : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                      }`}
-                      onClick={toggleMenu} // Close menu when navigating
-                    >
-                      {item.id === "payment" ? (
-                        <span className="flex items-center">
-                          <FaShoppingCart className="mr-3" /> {item.label}
-                        </span>
-                      ) : (
-                        item.label
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+        {/* --- Wrap conditional rendering with AnimatePresence --- */}
+        <AnimatePresence>
+          {menuOpen && (
+            <>
+              {/* Backdrop for closing menu on outside click */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
+                className="fixed inset-0 bg-black/50 z-30 md:hidden"
+                onClick={toggleMenu}
+              />
 
-              <div className="mt-auto mb-6">
-                <motion.a
-                  href="/download"
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
-                  onClick={toggleMenu} // Close menu when navigating
-                >
-                  <FaDownload className="mr-3" />
-                  Download Now
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
-        )}
+              {/* Mobile Menu */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
+                className="md:hidden fixed top-0 bottom-0 right-0 w-3/4 max-w-sm bg-[#0d1117]/95 backdrop-blur-md px-4 py-6 z-40 shadow-lg"
+              >
+                <div className="flex flex-col h-full">
+                  <ul className="space-y-3">
+                    {navItems.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          to={item.path}
+                          className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
+                            location.pathname === item.path
+                              ? "text-white bg-[#e63946]/10 border border-[#e63946]/30"
+                              : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                          }`}
+                          onClick={toggleMenu}
+                        >
+                          {item.id === "payment" ? (
+                            <span className="flex items-center">
+                              <FaShoppingCart className="mr-3" /> {item.label}
+                            </span>
+                          ) : (
+                            item.label
+                          )}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto mb-6">
+                    <motion.a
+                      href="/download"
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full flex items-center justify-center bg-gradient-to-r from-[#e63946] to-[#ff6b6b] text-white px-6 py-3 rounded-lg transition-all duration-300 shadow font-semibold text-base"
+                      onClick={toggleMenu}
+                    >
+                      <FaDownload className="mr-3" />
+                      Download Now
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
