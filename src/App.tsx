@@ -1,6 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import { BackgroundComponent } from "./components/global/BackgroundComponent";
 import FooterComponent from "./components/global/FooterComponent";
 import HeaderComponent from "./components/global/HeaderComponent";
@@ -28,6 +33,7 @@ const App = () => {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/download" element={<DownloadPage />} />
             <Route path="/legal" element={<LegalPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Analytics />
           <SpeedInsights />
