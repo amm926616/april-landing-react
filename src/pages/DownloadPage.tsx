@@ -14,7 +14,7 @@ export default function UpdatesPage() {
 
   return (
     <main className="pt-8">
-      <GeneralPageLayout sections={sections} />;
+      <GeneralPageLayout sections={sections} />
     </main>
   );
 }
