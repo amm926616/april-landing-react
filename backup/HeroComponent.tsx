@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
     const fullText = "Welcome to April Music Player";
     let currentIndex = 0;
 
-    typingIntervalRef.current = window.setInterval(() => {
+    typingIntervalRef.current = globalThis.setInterval(() => {
       if (currentIndex < fullText.length) {
         setDisplayText(fullText.substring(0, currentIndex + 1));
         currentIndex++;
@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToFeatures }) => {
         if (typingIntervalRef.current) {
           clearInterval(typingIntervalRef.current);
         }
-        cursorIntervalRef.current = window.setInterval(() => {
+        cursorIntervalRef.current = globalThis.setInterval(() => {
           setShowCursor((prev) => !prev);
         }, 500);
       }

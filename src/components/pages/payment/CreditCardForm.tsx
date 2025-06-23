@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { CreditCard } from "lucide-react";
-import { PaymentFormProps } from "./PaymentFormProps";
+import { PaymentFormPropsType } from "../../../types/paymentform.type";
 
-const CreditCardForm: React.FC<PaymentFormProps> = ({
+const CreditCardForm: React.FC<PaymentFormPropsType> = ({
   selectedPlan,
   formClasses,
   inputClasses,
@@ -101,7 +101,10 @@ const CreditCardForm: React.FC<PaymentFormProps> = ({
         </div>
       </div>
 
-      <button className={`${buttonClasses} bg-[#ff4757] mt-4 cursor-pointer`}>
+      <button
+        type="button"
+        className={`${buttonClasses} bg-[#ff4757] mt-4 cursor-pointer`}
+      >
         {selectedPlan === "one-time" ? "Pay $40" : "Start Installments"}
       </button>
     </form>

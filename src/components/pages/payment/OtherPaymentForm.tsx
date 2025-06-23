@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Landmark } from "lucide-react";
-import { PaymentFormProps } from "./PaymentFormProps";
+import { PaymentFormPropsType } from "../../../types/paymentform.type";
 
-const OtherPaymentForm: React.FC<PaymentFormProps> = ({
+const OtherPaymentForm: React.FC<PaymentFormPropsType> = ({
   selectedPlan,
   formClasses,
   inputClasses,
@@ -67,7 +67,10 @@ const OtherPaymentForm: React.FC<PaymentFormProps> = ({
         </div>
       </div>
 
-      <button className={`${buttonClasses} bg-[#ff4757]  cursor-pointer`}>
+      <button
+        type="button"
+        className={`${buttonClasses} bg-[#ff4757]  cursor-pointer`}
+      >
         Request Payment Instructions
       </button>
     </form>

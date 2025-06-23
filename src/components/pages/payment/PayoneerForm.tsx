@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { CreditCard } from "lucide-react";
-import { PaymentFormProps } from "./PaymentFormProps";
+import { PaymentFormPropsType } from "../../../types/paymentform.type";
 
-const PayoneerForm: React.FC<PaymentFormProps> = ({
+const PayoneerForm: React.FC<PaymentFormPropsType> = ({
   selectedPlan,
   formClasses,
   buttonClasses,
@@ -37,6 +37,7 @@ const PayoneerForm: React.FC<PaymentFormProps> = ({
       </div>
     </div>
     <button
+      type="button"
       className={`${buttonClasses} bg-[#FF4800] hover:bg-[#E04000] cursor-pointer`}
     >
       Continue to Payoneer

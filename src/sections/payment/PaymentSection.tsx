@@ -45,7 +45,7 @@ export default function PaymentSection() {
   };
 
   return (
-    <SectionComponent id="/payment" className={"py-16"}>
+    <SectionComponent id="/payment" className="py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,6 +77,7 @@ export default function PaymentSection() {
         >
           <div className="bg-[#1e1e2a] p-1 rounded-full inline-flex">
             <button
+              type="button"
               className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${
                 selectedPlan === "one-time"
                   ? "bg-[#ff4757] text-white"
@@ -87,6 +88,7 @@ export default function PaymentSection() {
               One-Time Payment
             </button>
             <button
+              type="button"
               className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${
                 selectedPlan === "installment"
                   ? "bg-[#ff4757] text-white"
@@ -224,6 +226,7 @@ export default function PaymentSection() {
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button
+              type="button"
               className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${
                 selectedPaymentMethod === "credit_card"
                   ? "bg-[#ff4757] text-white shadow-lg"
@@ -234,6 +237,7 @@ export default function PaymentSection() {
               <CreditCard className="w-5 h-5 mr-2" /> Card
             </button>
             <button
+              type="button"
               className={`flex items-center cursor-pointer px-5 py-2.5 rounded-lg font-medium transition-all ${
                 selectedPaymentMethod === "paypal"
                   ? "bg-[#ff4757] text-white shadow-lg"
@@ -244,6 +248,7 @@ export default function PaymentSection() {
               <Wallet className="w-5 h-5 mr-2" /> PayPal
             </button>
             <button
+              type="button"
               className={`flex items-center px-5 py-2.5 rounded-lg font-medium  cursor-pointer transition-all ${
                 selectedPaymentMethod === "payoneer"
                   ? "bg-[#ff4757] text-white shadow-lg"
@@ -254,6 +259,7 @@ export default function PaymentSection() {
               <Banknote className="w-5 h-5 mr-2" /> Payoneer
             </button>
             <button
+              type="button"
               className={`flex items-center px-5 py-2.5 rounded-lg font-medium transition-all cursor-pointer ${
                 selectedPaymentMethod === "other"
                   ? "bg-[#ff4757] text-white shadow-lg"

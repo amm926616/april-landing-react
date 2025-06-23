@@ -62,7 +62,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                 className="flex flex-col items-center sm:flex-row gap-4 sm:justify-center lg:justify-start"
               >
                 <Link to="/download">
-                  <button className="bg-gradient-to-r cursor-pointer from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2">
+                  <button
+                    type="button"
+                    className="bg-gradient-to-r cursor-pointer from-[#e63946] to-[#ff6b6b] hover:from-[#d62e3b] hover:to-[#e63946] text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -80,7 +83,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ id, className }) => {
                 </Link>
 
                 <a href="#demo">
-                  <button className="border-2 border-[#e63946] hover:bg-[#e63946]/10 text-[#e63946] px-8 py-4 rounded-full transition-all duration-300 font-medium flex items-center gap-2 cursor-pointer">
+                  <button
+                    type="button"
+                    className="border-2 border-[#e63946] hover:bg-[#e63946]/10 text-[#e63946] px-8 py-4 rounded-full transition-all duration-300 font-medium flex items-center gap-2 cursor-pointer"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"

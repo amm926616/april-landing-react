@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Wallet } from "lucide-react";
-import { PaymentFormProps } from "./PaymentFormProps";
+import { PaymentFormPropsType } from "../../../types/paymentform.type";
 
-const PayPalForm: React.FC<PaymentFormProps> = ({
+const PayPalForm: React.FC<PaymentFormPropsType> = ({
   selectedPlan,
   formClasses,
   buttonClasses,
@@ -36,7 +36,10 @@ const PayPalForm: React.FC<PaymentFormProps> = ({
         </span>
       </div>
     </div>
-    <button className={`${buttonClasses} bg-[#0070BA] cursor-pointer`}>
+    <button
+      type="button"
+      className={`${buttonClasses} bg-[#0070BA] cursor-pointer`}
+    >
       Continue to PayPal
     </button>
   </motion.div>
