@@ -64,7 +64,8 @@ const UpdatesSection: React.FC<UpdatesSectionProps> = ({ id, className }) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
+              // FIX: Replaced "transition-all" with specific transition classes
+              className="bg-[#1a1a24]/80 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow transition-colors duration-300 border border-[#2e2e3a] hover:border-[#e63946]/30"
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div>

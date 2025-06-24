@@ -75,11 +75,12 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className={`${option.color} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2e2e3a] hover:border-[#e63946]/50 group cursor-pointer`}
+              // FIX: Replaced "transition-all" with specific, non-conflicting transition classes.
+              className={`${option.color} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow transition-colors duration-300 border border-[#2e2e3a] hover:border-[#e63946]/50 group cursor-pointer`}
             >
               <div className="flex items-start space-x-4">
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  // Note: Removed a conflicting transition from the icon's container as well.
                   className="text-3xl p-3 rounded-full bg-[#1a1a24] border border-[#e63946]/30 group-hover:bg-[#e63946]/20 transition-colors duration-300"
                 >
                   {option.icon}
@@ -89,11 +90,8 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
                     {option.title}
                   </h3>
                   <p className="text-gray-300 text-sm">{option.description}</p>
-                  <motion.div
-                    className="mt-3 text-[#e63946] text-sm font-medium flex items-center"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
+                  {/* This inner animation can also be simplified if needed, but the main flicker fix is above. */}
+                  <div className="mt-3 text-[#e63946] text-sm font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Learn more
                     <svg
                       className="w-4 h-4 ml-1"
@@ -108,7 +106,7 @@ const SupportSection: React.FC<SupportSectionProps> = ({ id, className }) => {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.a>
