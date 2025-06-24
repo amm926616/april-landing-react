@@ -80,32 +80,40 @@ const FooterComponent: React.FC<FooterProps> = ({
   return (
     <footer
       id="footer"
-      className="relative z-20 bg-gradient-to-b from-[#0d1117] to-[#1a1a24] text-white pt-20 pb-8 border-t border-gray-800/50"
+      className="relative z-20 bg-gradient-to-b from-[#0d1117] to-[#1a1a24] text-white pt-12 pb-8 border-t border-gray-800/50 md:pt-20" // Adjusted pt for mobile
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+          {" "}
+          {/* Adjusted grid for mobile */}
           {/* Brand info */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center md:text-left">
+            {" "}
+            {/* Center on mobile, left on larger screens */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="flex items-center mb-6"
+              className="flex items-center justify-center md:justify-start mb-6" // Center on mobile, start on larger screens
             >
               <img
                 src={AprilIcon}
                 alt="April Icon"
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 object-contain mr-2" // Added mr-2 for spacing
               />
-              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc]">
+              <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#e63946] to-[#a8dadc] sm:text-2xl">
+                {" "}
+                {/* Adjusted text size for mobile */}
                 April Music Player
               </h3>
             </motion.div>
-
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-400 mb-6 px-4 md:px-0">
+              {" "}
+              {/* Added horizontal padding for smaller screens */}
               The music player that helps you learn languages through your
               favorite songs.
             </p>
-
-            <div className="flex space-x-4">
+            <div className="flex justify-center md:justify-start space-x-4 mb-8 md:mb-0">
+              {" "}
+              {/* Centered social links on mobile, added bottom margin */}
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
@@ -114,7 +122,7 @@ const FooterComponent: React.FC<FooterProps> = ({
                   rel="noopener noreferrer"
                   whileHover={{ y: -3, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-white p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all"
+                  className="text-gray-400 hover:text-white p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all text-xl" // Increased icon size slightly for better tap target
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -122,20 +130,25 @@ const FooterComponent: React.FC<FooterProps> = ({
               ))}
             </div>
           </div>
-
           {/* Footer links */}
           {footerLinks.map((column, index) => (
-            <div key={index}>
-              <h3 className="text-lg font-semibold text-gray-200 mb-6">
+            <div key={index} className="text-center md:text-left">
+              {" "}
+              {/* Centered text on mobile, left on larger screens */}
+              <h3 className="text-base font-semibold text-gray-200 mb-4 sm:text-lg">
+                {" "}
+                {/* Adjusted text size for mobile */}
                 {column.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
+                {" "}
+                {/* Adjusted spacing for mobile */}
                 {column.links.map((link, linkIndex) => (
                   <motion.li key={linkIndex} whileHover={{ x: 5 }}>
                     <Link
                       to={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center"
+                      className="text-gray-400 hover:text-[#e63946] transition-colors flex items-center justify-center md:justify-start" // Centered links on mobile
                     >
                       <span className="w-1 h-1 bg-[#e63946] rounded-full mr-2"></span>
                       {link.label}
@@ -145,17 +158,22 @@ const FooterComponent: React.FC<FooterProps> = ({
               </ul>
             </div>
           ))}
-
           {/* Contact info */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-200 mb-6">
+          <div className="text-center md:text-left">
+            {" "}
+            {/* Centered text on mobile, left on larger screens */}
+            <h3 className="text-base font-semibold text-gray-200 mb-4 sm:text-lg">
+              {" "}
+              {/* Adjusted text size for mobile */}
               Contact Us
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
+              {" "}
+              {/* Adjusted spacing for mobile */}
               <li>
                 <a
                   href={`mailto:${email}`}
-                  className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start"
+                  className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start justify-center md:justify-start" // Centered on mobile
                 >
                   <FaEnvelope className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
                   <span>{email}</span>
@@ -166,7 +184,7 @@ const FooterComponent: React.FC<FooterProps> = ({
                   href={discordLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start"
+                  className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start justify-center md:justify-start" // Centered on mobile
                 >
                   <FaDiscord className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
                   <span>Join our Discord community</span>
@@ -182,7 +200,7 @@ const FooterComponent: React.FC<FooterProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800/50 pt-8 mt-12 text-center text-gray-500"
+          className="border-t border-gray-800/50 pt-8 mt-8 md:mt-12 text-center text-gray-500" // Adjusted top margin for mobile
         >
           <p className="text-sm">
             &copy; {new Date().getFullYear()} April Music Player. All rights
