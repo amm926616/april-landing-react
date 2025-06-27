@@ -2,7 +2,6 @@ import React from "react";
 import {
   FaTelegram,
   FaGithub,
-  FaEnvelope,
   FaDiscord,
   FaTwitter,
   FaYoutube,
@@ -19,7 +18,6 @@ interface FooterProps {
 }
 
 const FooterComponent: React.FC<FooterProps> = ({
-  email = "support@aprilmusic.app",
   telegramLink = "https://t.me/aprilmusic",
   githubLink = "https://github.com/aprilmusic",
   discordLink = "https://discord.gg/aprilmusic",
@@ -170,24 +168,16 @@ const FooterComponent: React.FC<FooterProps> = ({
             <ul className="space-y-3 sm:space-y-4">
               {" "}
               {/* Adjusted spacing for mobile */}
+              
               <li>
                 <a
-                  href={`mailto:${email}`}
-                  className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start justify-center md:justify-start" // Centered on mobile
-                >
-                  <FaEnvelope className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>{email}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={discordLink}
+                  href={telegramLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-[#e63946] transition-colors flex items-start justify-center md:justify-start" // Centered on mobile
                 >
-                  <FaDiscord className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Join our Discord community</span>
+                  <FaTelegram className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Join our Telegram channel</span>
                 </a>
               </li>
             </ul>
